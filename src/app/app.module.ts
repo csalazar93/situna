@@ -6,26 +6,11 @@ import { AppRoutingModule } from './app-routing.module';//Esto se agrega para po
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { InicioComponent } from './components/inicio/inicio.component';
-import { AcercadeComponent } from './components/acercade/acercade.component';
-import { PlantaComponent } from './components/planta/planta.component';
-import { AtractivoComponent } from './components/atractivo/atractivo.component';
-import { ReportesComponent } from './components/reportes/reportes.component';
-import { AnalisisComponent } from './components/analisis/analisis.component';
-import { RolesComponent } from './components/roles/roles.component';
-import { UsuariosComponent } from './components/usuarios/usuarios.component';
-
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    InicioComponent,
-    AcercadeComponent,
-    PlantaComponent,
-    AtractivoComponent,
-    ReportesComponent,
-    AnalisisComponent,
-    RolesComponent,
-    UsuariosComponent
+    InicioComponent
   ],
   imports: [
     BrowserModule,

@@ -3,3 +3,7 @@
     font-family: "Yu Gothic UI";
     font-size: 16px;
 }
+
+nav.navbar{
+    font-weight: bold !important;
+}

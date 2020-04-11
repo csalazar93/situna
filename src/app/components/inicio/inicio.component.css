@@ -1,0 +1,16 @@
+.InfoInicio {
+    /*color: #487353 !important;*/
+    margin: 0 !important;
+        margin-right: 0px;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    margin-right: -50% !important;
+    transform: translate(-50%, -50%) !important;
+}
+
+.imgInicio{
+    width: 207px;
+    height: 128px;
+    margin-bottom: 0.5rem;
+}

@@ -1,8 +1,8 @@
 
 
 <!--Navbar -->
-<nav class="mb-1 navbar navbar-expand-lg navbar-dark default-color">
-    <a class="navbar-brand" [routerLink]="['inicio']">Navbar</a>
+<nav id="menuPrincipal" class="mb-1 navbar navbar-expand-lg navbar-dark default-color fixed-top">
+    <a class="navbar-brand" [routerLink]="['inicio']"><img class="logoPagina" src="../../../assets/img/una-png-7@2x.png" alt=""></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
       aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -10,14 +10,17 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" [routerLink]="['inicio']">Home
+          <a class="nav-link" [routerLink]="['inicio']">Inicio
             <span class="sr-only">(current)</span>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link">Planta</a>
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="['fichas']">Fichas de inventario</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item active" [routerLink]="['analisis']">
+          <a class="nav-link">Análisis</a>
+        </li>
+        <!--<li class="nav-item">
           <a class="nav-link" href="#">Pricing</a>
         </li>
         <li class="nav-item dropdown">
@@ -29,7 +32,7 @@
             <a class="dropdown-item" href="#">Another action</a>
             <a class="dropdown-item" href="#">Something else here</a>
           </div>
-        </li>
+        </li>-->
       </ul>
       <ul class="navbar-nav ml-auto nav-flex-icons">
         <li class="nav-item">

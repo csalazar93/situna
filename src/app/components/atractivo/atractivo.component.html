@@ -1,0 +1,664 @@
+
+<div class="container-fluid html body">
+  <section id="sec1" class="row">
+    <div class="form-group">
+      <h3 class="text-center mt-3"><strong>Ficha de inventario para categorizar atractivos</strong></h3>
+
+      <div class="row">
+        <div class="col-sm form-group">
+          <label for="numFicha"><strong>Número de ficha</strong></label>
+          <input type="text" name="numFicha" id="numFicha" class="form-control" value="FAT-00000001" readonly>
+        </div>
+        <div class="col-sm form-group">
+          <label for="fecha"><strong>Fecha</strong></label>
+          <input type="date" name="fecha" id="fecha" class="form-control">
+        </div>
+        <div class="col-sm form-group">
+          <label for="investigador"><strong>Investigador</strong></label>
+          <input type="text" name="investigador" id="investigador" class="form-control">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <a class="btnSection btn btn-primary hvr-icon-forward" [routerLink]="['/fichas/atractivo']" fragment="sec2">Siguiente <i class="fas fa-chevron-circle-right hvr-icon"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="sec2" class="row ocultoS">
+    <div class="form-group">
+      <h3 class="mt-3 mb-3 text-center"><strong>Información general</strong></h3>
+      <div class="form-group">
+        <label for="nomAtractivo"><strong>1. Nombre del atractivo:</strong></label>
+        <input type="text" name="nomAtractivo" id="nomAtractivo" class="form-control">
+      </div>
+
+      <div class="row">
+        <!--Datos sobre dirección-->
+        <div class="col-sm form-group">
+          <label for="provincia"><strong>2. Provincia:</strong></label>
+          <select name="provincia" id="provincia" class="custom-select">
+            <option value="01">San José</option>
+          </select>
+        </div>
+
+        <div class="col-sm form-group">
+          <label for="canton"><strong>3. Cantón:</strong></label>
+          <select name="canton" id="canton" class="custom-select">
+            <option value="01">Pérez Zeledón</option>
+          </select>
+        </div>
+
+        <div class="col-sm form-group">
+          <label for="distrito"><strong>4. Distrito:</strong></label>
+          <select name="distrito" id="distrito" class="custom-select">
+            <option value="01">Daniel Flores</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="localidad"><strong>5. Localidad:</strong></label>
+        <textarea class="form-control" name="localidad" id="localidad" cols="30" rows="1"></textarea>
+      </div>
+
+      <label><strong>6. Coordenadas del atractivo</strong></label>
+      <div class="row">
+        <div class="col-sm form-group">
+          <label for="latitud"><strong>6.1. Latitud:</strong></label>
+          <input type="text" name="latitud" id="latitud" class="form-control">
+        </div>
+        <div class="col-sm form-group">
+          <label for="longitud"><strong>6.2. Longitud:</strong></label>
+          <input type="text" name="longitud" id="longitud" class="form-control">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <a class="btnSection btn btn-primary hvr-icon-back" [routerLink]="['/fichas/atractivo']" fragment="sec1"><i class="fas fa-chevron-circle-left hvr-icon"></i> Anterior</a>
+        <a class="btnSection btn btn-primary hvr-icon-forward" [routerLink]="['/fichas/atractivo']" fragment="sec3">Siguiente <i class="fas fa-chevron-circle-right hvr-icon"></i></a>
+      </div>
+    </div>
+ </section>
+
+  <section id="sec3" class="row ocultoS">
+    <div class="form-group">
+      <h3 class="mt-3 mb-3 text-center"><strong>Información general</strong></h3>
+      <div class="form-group">
+        <label for="medioAcceso"><strong>7. Medio de acceso:</strong></label>
+        <input type="text" name="medioAcceso" id="medioAcceso" class="form-control">
+      </div>
+
+      <label><strong>8. Medios de acceso al atractivo:</strong></label>
+      <fieldset class="form-group">
+
+        <div class="custom-control custom-radio custom-control-inline">
+          <input class="custom-control-input" type="radio" name="medioAcceso" id="todoVehiculo" value="1">
+          <label class="custom-control-label" for="todoVehiculo">1. Todo tipo de vehículo</label>
+        </div>
+
+        <div class="custom-control custom-radio custom-control-inline">
+          <input class="custom-control-input" type="radio" name="medioAcceso" id="liviano" value="2">
+          <label class="custom-control-label" for="liviano">2. Solo vehículo liviano (sencillo y doble tracción)</label>
+        </div>
+
+        <div class="custom-control custom-radio custom-control-inline">
+          <input class="custom-control-input" type="radio" name="medioAcceso" id="doble" value="3">
+          <label class="custom-control-label" for="doble">3. Solo doble tracción</label>
+        </div>
+
+        <div class="custom-control custom-radio custom-control-inline">
+          <input class="custom-control-input" type="radio" name="medioAcceso" id="caminando" value="4">
+          <label class="custom-control-label" for="caminando">4. Solo caminando</label>
+        </div>
+
+      </fieldset>
+
+      <label><strong>9. Condiciones de la ruta de acceso del atractivo:</strong></label>
+      <fieldset class="form-group">
+
+        <div class="custom-control custom-radio custom-control-inline">
+          <input class="custom-control-input" type="radio" name="condicionRuta" id="tierra" value="1">
+          <label class="custom-control-label" for="tierra">1. Tierra</label>
+        </div>
+
+        <div class="custom-control custom-radio custom-control-inline">
+          <input class="custom-control-input" type="radio" name="condicionRuta" id="lastre" value="2">
+          <label class="custom-control-label" for="lastre">2. Lastre</label>
+        </div>
+
+        <div class="custom-control custom-radio custom-control-inline">
+          <input class="custom-control-input" type="radio" name="condicionRuta" id="asfalto" value="3">
+          <label class="custom-control-label" for="asfalto">3. Asfalto</label>
+        </div>
+
+        <div class="custom-control custom-radio custom-control-inline">
+          <input class="custom-control-input" type="radio" name="condicionRuta" id="mixta" value="4">
+          <label class="custom-control-label" for="mixta">4. Mixta</label>
+        </div>
+
+      </fieldset>
+
+      <label><strong>10. Estacionalidad:</strong></label>
+      <fieldset class="form-group">
+
+        <div class="custom-control custom-radio custom-control-inline">
+          <input class="custom-control-input" type="radio" name="estacionalidad" id="seca" value="1">
+          <label class="custom-control-label" for="seca">1. Época seca</label>
+        </div>
+
+        <div class="custom-control custom-radio custom-control-inline">
+          <input class="custom-control-input" type="radio" name="estacionalidad" id="lluviosa" value="2">
+          <label class="custom-control-label" for="lluviosa">2. Lluviosa</label>
+        </div>
+
+        <div class="custom-control custom-radio custom-control-inline">
+          <input class="custom-control-input" type="radio" name="estacionalidad" id="todoAnio" value="3">
+          <label class="custom-control-label" for="todoAnio">3. Todo el año</label>
+        </div>
+
+      </fieldset>
+
+      <div class="form-group">
+        <label for="Descripción del atractivo"><strong>11. Descripción del atractivo:</strong></label>
+        <textarea class="form-control" name="descripcionAtractivo" id="descripcionAtractivo" cols="30"
+          rows="2"></textarea>
+      </div>
+  
+      <div class="form-group">
+        <a class="btnSection btn btn-primary hvr-icon-back" [routerLink]="['/fichas/atractivo']" fragment="sec2"><i class="fas fa-chevron-circle-left hvr-icon"></i> Anterior</a>
+        <a class="btnSection btn btn-primary hvr-icon-forward" [routerLink]="['/fichas/atractivo']" fragment="sec4">Siguiente <i class="fas fa-chevron-circle-right hvr-icon"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="sec4" class="row ocultoS">
+    <div class="form-group">
+      <h3 class="mt-3 mb-3 text-center"><strong>Información general</strong></h3>
+      <label><strong>Si el atractivo es o está en propiedad privada, anotar los siguientes datos</strong></label>
+
+      <div class="form-group">
+        <label for="numsTelefono"><strong>13. Teléfonos del negocio:</strong></label>
+        <button class="btn btn-primary agregar" data-toggle="tooltip" data-placement="top" title="Agregar teléfono"><i
+            class="fas fa-plus"></i></button>
+        <div id="numsTelefono">
+          No hay telefonos registrados
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="emails"><strong>14. Correo electrónico:</strong></label>
+        <button class="btn btn-primary agregar" data-toggle="tooltip" data-placement="top"
+          title="Agregar correo electrónico"><i class="fas fa-plus"></i></button>
+        <div id="emails">
+          No hay correos electrónicos registrados
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="paginas"><strong>15. Pàgina web:</strong></label>
+        <button class="btn btn-primary agregar" data-toggle="tooltip" data-placement="top" title="Agregar página web"><i
+            class="fas fa-plus"></i></button>
+        <div id="paginas">
+          No hay páginas web registradas
+        </div>
+      </div>
+
+      <div class="form-group">
+        <a class="btnSection btn btn-primary hvr-icon-back" [routerLink]="['/fichas/atractivo']" fragment="sec3"><i class="fas fa-chevron-circle-left hvr-icon"></i> Anterior</a>
+        <a class="btnSection btn btn-primary hvr-icon-forward" [routerLink]="['/fichas/atractivo']" fragment="sec5">Siguiente <i class="fas fa-chevron-circle-right hvr-icon"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="sec5" class="row ocultoS">
+    <div class="form-group">
+      <h3 class="mt-3 mb-3 text-center"><strong>Categorías de los atractivos</strong></h3>
+      <label>16. De acuerdo a la observación del atractivo, marcar en la siguientes tabla. <strong>MARCAR SOLO UNA
+            OPCIÓN EN CADA COLUMNA, LA PRINCIPAL:</strong></label>
+      
+      <div class="row">
+        <div class="col-sm  form-group">
+
+          <label class="text-center"><strong>Categorías</strong></label>
+
+          <fieldset class="form-group">
+
+            <div class="custom-control custom-radio">
+              <input class="custom-control-input" type="radio" name="categoriaAtractivo" id="natural" value="1">
+              <label class="custom-control-label" for="natural">1. Sitios Naturales.</label>
+            </div>
+
+            <div class="custom-control custom-radio">
+              <input class="custom-control-input" type="radio" name="categoriaAtractivo" id="cultural" value="2">
+              <label class="custom-control-label" for="cultural">2. Museos y Manifestaciones Culturales.</label>
+            </div>
+
+            <div class="custom-control custom-radio">
+              <input class="custom-control-input" type="radio" name="categoriaAtractivo" id="folklore" value="3">
+              <label class="custom-control-label" for="folklore">3. Folklore.</label>
+            </div>
+
+            <div class="custom-control custom-radio">
+              <input class="custom-control-input" type="radio" name="categoriaAtractivo" id="realizaciones" value="4">
+              <label class="custom-control-label" for="realizaciones">4. Realizaciones técnicas, científicas o artísticas
+                contemporáneas.</label>
+            </div>
+
+          </fieldset>
+
+        </div>
+
+        <div class="col-sm  form-group">
+          <label class="text-center"><strong>Tipos</strong></label>
+
+          <div class="ocultoC" id="c1">
+
+            <fieldset class="form-group">
+
+              <div class="custom-control custom-radio">
+                <input class="custom-control-input" type="radio" name="tipoAtractivo" id="montanas" value="1">
+                <label class="custom-control-label" for="montanas">1. Montañas.</label>
+              </div>
+
+              <div class="custom-control custom-radio">
+                <input class="custom-control-input" type="radio" name="tipoAtractivo" id="planicies" value="2">
+                <label class="custom-control-label" for="planicies">2. Planicies.</label>
+              </div>
+
+              <div class="custom-control custom-radio">
+                <input class="custom-control-input" type="radio" name="tipoAtractivo" id="otrosN" value="3">
+                <label class="custom-control-label" for="otrosN">3. Otros.</label>
+              </div>
+
+            </fieldset>
+
+          </div>
+
+          <div class="ocultoC" id="c2">
+
+            <fieldset class="form-group">
+
+              <div class="custom-control custom-radio">
+                <input class="custom-control-input" type="radio" name="tipoAtractivo" id="museoTipo" value="4">
+                <label class="custom-control-label" for="museoTipo">4. Museos.</label>
+              </div>
+
+              <div class="custom-control custom-radio">
+                <input class="custom-control-input" type="radio" name="tipoAtractivo" id="obrasArte" value="5">
+                <label class="custom-control-label" for="obrasArte">5. Obras de arte.</label>
+              </div>
+
+              <div class="custom-control custom-radio">
+                <input class="custom-control-input" type="radio" name="tipoAtractivo" id="otrosC" value="6">
+                <label class="custom-control-label" for="otrosC">6. Otros.</label>
+              </div>
+
+            </fieldset>
+
+          </div>
+
+          <div class="ocultoC" id="c3">
+
+            <fieldset class="form-group">
+
+              <div class="custom-control custom-radio">
+                <input class="custom-control-input" type="radio" name="tipoAtractivo" id="artesanias" value="7">
+                <label class="custom-control-label" for="artesanias">7. Artesanías y Arte.</label>
+              </div>
+
+            </fieldset>
+
+          </div>
+
+          <div class="ocultoC" id="c4">
+
+            <fieldset class="form-group">
+
+              <div class="custom-control custom-radio">
+                <input class="custom-control-input" type="radio" name="tipoAtractivo" id="exportaciones" value="8">
+                <label class="custom-control-label" for="exportaciones">8. Exportaciones.</label>
+              </div>
+
+            </fieldset>
+
+          </div>
+
+        </div>
+
+        <div class="col-sm  form-group">
+
+          <label class="text-center"><strong>Subtipos</strong></label>
+
+          <div class="ocultoT" id="t1">
+
+            <fieldset class="form-group">
+
+              <div class="custom-control custom-radio">
+                <input class="custom-control-input" type="radio" name="subTipoAtractivo" id="altaMontana" value="1">
+                <label class="custom-control-label" for="altaMontana">1. Altas Montañas.</label>
+              </div>
+
+              <div class="custom-control custom-radio">
+                <input class="custom-control-input" type="radio" name="subTipoAtractivo" id="sierras" value="2">
+                <label class="custom-control-label" for="sierras">2. Sierras.</label>
+              </div>
+
+              <div class="custom-control custom-radio">
+                <input class="custom-control-input" type="radio" name="subTipoAtractivo" id="valles" value="3">
+                <label class="custom-control-label" for="valles">3. Valles.</label>
+              </div>
+
+              <div class="custom-control custom-radio">
+                <input class="custom-control-input" type="radio" name="subTipoAtractivo" id="quebradas" value="4">
+                <label class="custom-control-label" for="quebradas">4. Quebradas.</label>
+              </div>
+
+            </fieldset>
+          </div>
+
+          <div class="ocultoT" id="t2">
+
+            <fieldset class="form-group">
+
+              <div class="custom-control custom-radio">
+                <input class="custom-control-input" type="radio" name="subTipoAtractivo" id="llanuras" value="5">
+                <label class="custom-control-label" for="llanuras">5. Llanuras.</label>
+              </div>
+
+            </fieldset>
+          </div>
+
+          <div class="ocultoT" id="t3">
+
+            <fieldset class="form-group">
+
+              <div class="custom-control custom-radio">
+                <input class="custom-control-input" type="radio" name="subTipoAtractivo" id="lagos" value="6">
+                <label class="custom-control-label" for="lagos">6. Lagos.</label>
+              </div>
+
+              <div class="custom-control custom-radio">
+                <input class="custom-control-input" type="radio" name="subTipoAtractivo" id="lagunas" value="7">
+                <label class="custom-control-label" for="lagunas">7. Lagunas.</label>
+              </div>
+
+              <div class="custom-control custom-radio">
+                <input class="custom-control-input" type="radio" name="subTipoAtractivo" id="rios" value="8">
+                <label class="custom-control-label" for="rios">8. Ríos.</label>
+              </div>
+
+              <div class="custom-control custom-radio">
+                <input class="custom-control-input" type="radio" name="subTipoAtractivo" id="caidasAgua" value="9">
+                <label class="custom-control-label" for="caidasAgua">9. Caídas de agua.</label>
+              </div>
+
+              <div class="custom-control custom-radio">
+                <input class="custom-control-input" type="radio" name="subTipoAtractivo" id="cavernas" value="10">
+                <label class="custom-control-label" for="cavernas">10. Cavernas.</label>
+              </div>
+
+              <div class="custom-control custom-radio">
+                <input class="custom-control-input" type="radio" name="subTipoAtractivo" id="obsFloFa" value="11">
+                <label class="custom-control-label" for="obsFloFa">11. Lugares de observación de flora y fauna.</label>
+              </div>
+
+              <div class="custom-control custom-radio">
+                <input class="custom-control-input" type="radio" name="subTipoAtractivo" id="lugarPesca" value="12">
+                <label class="custom-control-label" for="lugarPesca">12. Lugares de pesca.</label>
+              </div>
+
+              <div class="custom-control custom-radio">
+                <input class="custom-control-input" type="radio" name="subTipoAtractivo" id="camPintoresco" value="13">
+                <label class="custom-control-label" for="camPintoresco">13. Caminos Pintorescos.</label>
+              </div>
+
+              <div class="custom-control custom-radio">
+                <input class="custom-control-input" type="radio" name="subTipoAtractivo" id="termas" value="14">
+                <label class="custom-control-label" for="termas">14. Termas.</label>
+              </div>
+
+              <div class="custom-control custom-radio">
+                <input class="custom-control-input" type="radio" name="subTipoAtractivo" id="parqueNacional" value="15">
+                <label class="custom-control-label" for="parqueNacional">15. Parques Nacionales.</label>
+              </div>
+
+              <div class="custom-control custom-radio">
+                <input class="custom-control-input" type="radio" name="subTipoAtractivo" id="reservas" value="16">
+                <label class="custom-control-label" for="reservas">16. Reservas de flora y fauna.</label>
+              </div>
+
+            </fieldset>
+
+          </div>
+
+          <div class="ocultoT" id="t4">
+
+            <fieldset class="form-group">
+
+              <div class="custom-control custom-radio">
+                <input class="custom-control-input" type="radio" name="subTipoAtractivo" id="museoSubCategoria"
+                  value="17">
+                <label class="custom-control-label" for="museoSubCategoria">17. Museos.</label>
+              </div>
+
+            </fieldset>
+
+          </div>
+
+          <div class="ocultoT" id="t5">
+
+            <fieldset class="form-group">
+
+              <div class="custom-control custom-radio">
+                <input class="custom-control-input" type="radio" name="subTipoAtractivo" id="pintura" value="18">
+                <label class="custom-control-label" for="pintura">18. Pintura.</label>
+              </div>
+
+              <div class="custom-control custom-radio">
+                <input class="custom-control-input" type="radio" name="subTipoAtractivo" id="escultura" value="19">
+                <label class="custom-control-label" for="escultura">19. Esculturas.</label>
+              </div>
+
+              <div class="custom-control custom-radio">
+                <input class="custom-control-input" type="radio" name="subTipoAtractivo" id="arteDecorativa" value="20">
+                <label class="custom-control-label" for="arteDecorativa">20. Artes decorativas.</label>
+              </div>
+
+              <div class="custom-control custom-radio">
+                <input class="custom-control-input" type="radio" name="subTipoAtractivo" id="arquitectura" value="21">
+                <label class="custom-control-label" for="arquitectura">21. Arquitectura.</label>
+              </div>
+
+              <div class="custom-control custom-radio">
+                <input class="custom-control-input" type="radio" name="subTipoAtractivo" id="realUrbana" value="22">
+                <label class="custom-control-label" for="realUrbana">22. Realizaciones Urbanas.</label>
+              </div>
+
+              <div class="custom-control custom-radio">
+                <input class="custom-control-input" type="radio" name="subTipoAtractivo" id="obraIngenieria" value="23">
+                <label class="custom-control-label" for="obraIngenieria">23. Obras de ingeniería.</label>
+              </div>
+
+            </fieldset>
+
+          </div>
+
+          <div class="ocultoT" id="t6">
+
+            <fieldset class="form-group">
+
+              <div class="custom-control custom-radio">
+                <input class="custom-control-input" type="radio" name="subTipoAtractivo" id="lugarHistorico" value="24">
+                <label class="custom-control-label" for="lugarHistorico">24. Lugares Históricos.</label>
+              </div>
+
+              <div class="custom-control custom-radio">
+                <input class="custom-control-input" type="radio" name="subTipoAtractivo" id="arqueologicos" value="25">
+                <label class="custom-control-label" for="arqueologicos">25. Ruinas y lugares arqueológicos.</label>
+              </div>
+
+            </fieldset>
+
+          </div>
+
+          <div class="ocultoT" id="t7">
+
+            <fieldset class="form-group">
+
+              <div class="custom-control custom-radio">
+                <input class="custom-control-input" type="radio" name="subTipoAtractivo" id="alfareria" value="26">
+                <label class="custom-control-label" for="alfareria">26. Alfarería.</label>
+              </div>
+
+              <div class="custom-control custom-radio">
+                <input class="custom-control-input" type="radio" name="subTipoAtractivo" id="tejidos" value="27">
+                <label class="custom-control-label" for="tejidos">27. Tejidos.</label>
+              </div>
+
+              <div class="custom-control custom-radio">
+                <input class="custom-control-input" type="radio" name="subTipoAtractivo" id="metales" value="28">
+                <label class="custom-control-label" for="metales">28. Metales.</label>
+              </div>
+
+            </fieldset>
+
+          </div>
+
+          <div class="ocultoT" id="t8">
+
+            <fieldset class="form-group">
+
+              <div class="custom-control custom-radio">
+                <input class="custom-control-input" type="radio" name="subTipoAtractivo" id="mineras" value="29">
+                <label class="custom-control-label" for="mineras">29. Mineras.</label>
+              </div>
+
+              <div class="custom-control custom-radio">
+                <input class="custom-control-input" type="radio" name="subTipoAtractivo" id="agropecuaria" value="30">
+                <label class="custom-control-label" for="agropecuaria">30. Agropecuarias.</label>
+              </div>
+
+              <div class="custom-control custom-radio">
+                <input class="custom-control-input" type="radio" name="subTipoAtractivo" id="industrial" value="31">
+                <label class="custom-control-label" for="industrial">31. Industriales.</label>
+              </div>
+
+              <div class="custom-control custom-radio">
+                <input class="custom-control-input" type="radio" name="subTipoAtractivo" id="arte" value="32">
+                <label class="custom-control-label" for="arte">32. Arte.</label>
+              </div>
+
+              <div class="custom-control custom-radio">
+                <input class="custom-control-input" type="radio" name="subTipoAtractivo" id="cientificoTecnico"
+                  value="33">
+                <label class="custom-control-label" for="cientificoTecnico">33. Científicos y técnicos.</label>
+              </div>
+
+            </fieldset>
+
+          </div>
+
+        </div>
+      </div>
+
+      <div>
+        <a class="btnSection btn btn-primary hvr-icon-back" [routerLink]="['/fichas/atractivo']" fragment="sec4"><i class="fas fa-chevron-circle-left hvr-icon"></i> Anterior</a>
+        <a class="btnSection btn btn-primary hvr-icon-forward" [routerLink]="['/fichas/atractivo']" fragment="sec6">Siguiente <i class="fas fa-chevron-circle-right hvr-icon"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="sec6" class="row ocultoS">
+    <div class="form-group">
+      <h3 class="mt-3 mb-3 text-center"><strong>Servicios de los atractivos</strong></h3>
+      <label>17. De acuerdo a la observación del atractivo, marcar los servicios que se brindan. <strong>PUEDE
+            MARCAR VARIAS OPCIONES:</strong></label>
+      <div class="form-group listaServicios">
+
+        <div class="custom-control custom-checkbox">
+          <input class="custom-control-input" type="checkbox" name="servicioAtractivo" id="aguaPotable" value="1">
+          <label class="custom-control-label" for="aguaPotable">1. Agua potable.</label>
+        </div>
+
+        <div class="custom-control custom-checkbox">
+          <input class="custom-control-input" type="checkbox" name="servicioAtractivo" id="areaExhibicion" value="2">
+          <label class="custom-control-label" for="areaExhibicion">2. Área de exhibición.</label>
+        </div>
+
+        <div class="custom-control custom-checkbox">
+          <input class="custom-control-input" type="checkbox" name="servicioAtractivo" id="duchas" value="3">
+          <label class="custom-control-label" for="duchas">3. Duchas.</label>
+        </div>
+
+        <div class="custom-control custom-checkbox">
+          <input class="custom-control-input" type="checkbox" name="servicioAtractivo" id="centroInformacion" value="4">
+          <label class="custom-control-label" for="centroInformacion">4. Centro de información.</label>
+        </div>
+
+        <div class="custom-control custom-checkbox">
+          <input class="custom-control-input" type="checkbox" name="servicioAtractivo" id="parqueo" value="5">
+          <label class="custom-control-label" for="parqueo">5. Parqueo.</label>
+        </div>
+
+        <div class="custom-control custom-checkbox">
+          <input class="custom-control-input" type="checkbox" name="servicioAtractivo" id="sendero" value="6">
+          <label class="custom-control-label" for="sendero">6. Sendero.</label>
+        </div>
+
+        <div class="custom-control custom-checkbox">
+          <input class="custom-control-input" type="checkbox" name="servicioAtractivo" id="souvenirs" value="7">
+          <label class="custom-control-label" for="souvenirs">7. Tienda de Souvenirs.</label>
+        </div>
+
+        <div class="custom-control custom-checkbox">
+          <input class="custom-control-input" type="checkbox" name="servicioAtractivo" id="sanitarios" value="8">
+          <label class="custom-control-label" for="sanitarios">8. Servicios Sanitarios.</label>
+        </div>
+
+        <div class="custom-control custom-checkbox">
+          <input class="custom-control-input" type="checkbox" name="servicioAtractivo" id="camping" value="9">
+          <label class="custom-control-label" for="camping">9. Área de Camping.</label>
+        </div>
+
+        <div class="custom-control custom-checkbox">
+          <input class="custom-control-input" type="checkbox" name="servicioAtractivo" id="casetaEntrada" value="10">
+          <label class="custom-control-label" for="casetaEntrada">10. Caseta de entrada.</label>
+        </div>
+
+        <div class="custom-control custom-checkbox">
+          <input class="custom-control-input" type="checkbox" name="servicioAtractivo" id="energiaElectrica" value="11">
+          <label class="custom-control-label" for="energiaElectrica">11. Energía eléctrica.</label>
+        </div>
+
+        <div class="custom-control custom-checkbox">
+          <input class="custom-control-input" type="checkbox" name="servicioAtractivo" id="discapacitados" value="12">
+          <label class="custom-control-label" for="discapacitados">12. Servicios para discapacitados.</label>
+        </div>
+
+        <div class="custom-control custom-checkbox">
+          <input class="custom-control-input" type="checkbox" name="servicioAtractivo" id="vigilancia" value="13">
+          <label class="custom-control-label" for="vigilancia">13. Vigilancia.</label>
+        </div>
+
+        <div class="custom-control custom-checkbox">
+          <input class="custom-control-input" type="checkbox" name="servicioAtractivo" id="areaDescanso" value="14">
+          <label class="custom-control-label" for="areaDescanso">14. Área de descanso.</label>
+        </div>
+
+        <div class="custom-control custom-checkbox">
+          <input class="custom-control-input" type="checkbox" name="servicioAtractivo" id="rotulación" value="15">
+          <label class="custom-control-label" for="rotulación">15. Rotulación.</label>
+        </div>
+
+      </div>
+
+      <div class="form-group">
+        <a class="btnSection btn btn-primary hvr-icon-back" [routerLink]="['/fichas/atractivo']" fragment="sec5"><i class="fas fa-chevron-circle-left hvr-icon"></i> Anterior</a>
+        <a class="btnSection btn btn-primary hvr-icon-fade" [routerLink]="['/fichas/atractivo']" fragment="sec1">Aplicar ficha <i class="fas fa-save hvr-icon"></i></a>
+      </div>
+    </div>
+  </section>
+
+</div>
+

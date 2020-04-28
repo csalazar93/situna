@@ -41,7 +41,9 @@
               "node_modules/hammerjs/hammer.min.js",
               "node_modules/jquery/dist/jquery.min.js",
               "src/assets/js/navbar.js",
-              "src/assets/js/fichasinventario.js"
+              "src/assets/js/fichasinventario.js",
+              "src/assets/js/planta.js",
+              "src/assets/js/atractivo.js"
             ]
           },
           "configurations": {
@@ -123,7 +125,9 @@
               "node_modules/hammerjs/hammer.min.js",
               "node_modules/jquery/dist/jquery.min.js",
               "src/assets/js/navbar.js",
-              "src/assets/js/fichasinventario.js"
+              "src/assets/js/fichasinventario.js",
+              "src/assets/js/planta.js",
+              "src/assets/js/atractivo.js"
             ]
           }
         },

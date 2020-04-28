@@ -8,13 +8,19 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { FichainventarioComponent } from './components/fichainventario/fichainventario.component';
 import { AnalisisComponent } from './components/analisis/analisis.component';
+import { PlantaComponent } from './components/planta/planta.component';
+import { AtractivoComponent } from './components/atractivo/atractivo.component';
+import { RouterModule } from '@angular/router';
+
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     InicioComponent,
     FichainventarioComponent,
-    AnalisisComponent
+    AnalisisComponent,
+    PlantaComponent,
+    AtractivoComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,54 @@
+.html{
+    scroll-behavior: smooth;
+    height: 100%;
+  }
+
+  /*Estilos generales de la plantilla*/
+  .body {
+    font-family: 'Yu Gothic UI' !important;
+    font-size: 20px;
+    height: 100%;
+  }
+
+  .custom-control-label {
+    font-weight: normal !important;
+  }
+
+  .agregar {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 6px 0;
+    font-size: 12px;
+    line-height: 1.428571429;
+    border-radius: 15px;
+    background-color: chocolate !important;
+    border-color: chocolate !important;
+  }
+
+  .ocultoP{
+    margin-bottom: 0.5rem;
+  }
+
+  .btnSection{
+    margin-top: 0.5rem;
+  }
+
+  section{
+    /*Centrar contenido*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;/*el tamaño del height centrado, el cual aumenta*/
+  }
+
+  .form-group{
+    /*Que los grupos abarquen el 100% y abarquen todo el width 90%*/
+    width: 100%;
+  }
+
+  .container-fluid{
+    /*Definir los márgenes personalizados del body*/
+    padding-left: 50px !important;
+    padding-right: 50px !important;
+  }

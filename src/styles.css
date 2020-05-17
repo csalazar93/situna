@@ -1,9 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
-*{
-    font-family: "Yu Gothic UI";
-    font-size: 16px;
+.html{
+    scroll-behavior: smooth;
+    height: 100%;
+}
+
+/*Estilos generales de la plantilla*/
+.body {
+    font-family: 'Yu Gothic UI' !important;
+    font-size: 20px;
+    height: 100%;
 }
 
 nav.navbar{
     font-weight: bold !important;
+}
+
+.btnSection{
+    margin-right: 2px;
 }

@@ -4,7 +4,7 @@
 
 $(document).ready(function () {
     $("#menuPrincipal a:not(.dropdown-toggle)").click(function () {
-        //$(".navbar-toggler").addClass("collapsed");
-        $("#navbarSupportedContent-333").removeClass("show", 250);
+        $(".navbar-toggler").addClass("collapsed", true);
+        $("#navbarSupportedContent").removeClass("show", 250);
     });
 });

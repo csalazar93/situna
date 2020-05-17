@@ -4,22 +4,60 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 
 import { InicioComponent } from './components/inicio/inicio.component';
-import {AnalisisComponent} from './components/analisis/analisis.component';
-import {FichainventarioComponent} from './components/fichainventario/fichainventario.component';
-import {PlantaComponent} from './components/planta/planta.component';
 
+import {PlantaComponent} from './components/fichasInventario/plantaTuristica/planta/planta.component';
+import {ListaPlantasComponent} from './components/fichasInventario/plantaTuristica/lista-plantas/lista-plantas.component';
+import {HomePlantaComponent} from './components/fichasInventario/plantaTuristica/home-planta/home-planta.component';
 
-import {AtractivoComponent} from './components/atractivo/atractivo.component';
+import {AtractivoComponent} from './components/fichasInventario/atractivoTuristico/atractivo/atractivo.component';
+import {ListaAtractivosComponent} from './components/fichasInventario/atractivoTuristico/lista-atractivos/lista-atractivos.component';
+import {HomeAtractivoComponent} from './components/fichasInventario/atractivoTuristico/home-atractivo/home-atractivo.component';
 
+import {HomeReportesComponent} from './components/reportes/home-reportes/home-reportes.component';
+import {ListaReportesComponent} from './components/reportes/lista-reportes/lista-reportes.component';
+
+import {HomeAnalisisComponent} from './components/analisis/home-analisis/home-analisis.component';
+import {DashboardComponent} from './components/analisis/dashboard/dashboard.component';
+
+import {HomeSolicitudesComponent} from './components/solicitudes/home-solicitudes/home-solicitudes.component';
+import {ListaSolicitudesComponent} from './components/solicitudes/lista-solicitudes/lista-solicitudes.component';
+import {SolicitudComponent} from './components/solicitudes/solicitud/solicitud.component';
+
+import {LoginComponent} from './components/login/login.component';
+
+import {SitunaGuard} from './guards/situna.guard'
 
 //Importar los componentes para generar las rutas
 const routes: Routes = [
-  { path: 'inicio', component: InicioComponent},
-  { path: 'analisis', component: AnalisisComponent},
-  { path: 'fichas', component: FichainventarioComponent},
-  { path: 'fichas/planta', component: PlantaComponent},
-  { path: 'fichas/atractivo', component: AtractivoComponent},
-  { path: '**', pathMatch: 'full', redirectTo: 'inicio' }
+  { path: '', component: InicioComponent, canActivate:[SitunaGuard]},
+
+  { path: 'fichas/crud-atractivo', component: HomeAtractivoComponent, canActivate:[SitunaGuard], children:[
+    { path: 'lista', component: ListaAtractivosComponent},
+    { path: 'atractivo-edit/:id', component: AtractivoComponent },
+    { path: 'atractivo-insert', component: AtractivoComponent }
+  ]},
+
+  { path: 'fichas/crud-planta', component: HomePlantaComponent, canActivate:[SitunaGuard], children:[
+    { path: 'lista', component: ListaPlantasComponent},
+    { path: 'planta-edit/:id', component: PlantaComponent },
+    { path: 'planta-insert', component: PlantaComponent }
+  ]},
+
+  { path: 'reporteria', component: HomeReportesComponent, canActivate:[SitunaGuard], children:[
+    { path: 'lista', component: ListaReportesComponent}
+  ]},
+
+  { path: 'analisis', component: HomeAnalisisComponent, canActivate:[SitunaGuard], children:[
+    { path: 'dashboard', component: DashboardComponent}
+  ]},
+
+  { path: 'solicitudes', component: HomeSolicitudesComponent, canActivate:[SitunaGuard], children:[
+    { path: 'lista', component: ListaSolicitudesComponent},
+    { path: 'solicitud/:id', component: SolicitudComponent }
+  ]},
+
+  { path: 'login', component: LoginComponent},
+  { path: '**', pathMatch: 'full', redirectTo: '' }
 ];
 
 

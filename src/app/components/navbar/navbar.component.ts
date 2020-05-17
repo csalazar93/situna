@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
-declare var $:any;//Declaro esto para usar las funciones que haya hecho con Jquery
-//Asi se usa JQuery con angular
-//https://blog.bitsrc.io/how-to-use-jquery-with-angular-when-you-absolutely-have-to-42c8b6a37ff9
+//Import jquery
+import * as $ from 'jquery';
+import { CuentaService } from 'src/app/servicios/cuenta.service';
+
+declare function OpenAtractivos();
+
+declare function OpenPlanta();
 
 @Component({
   selector: 'app-navbar',
@@ -14,10 +18,29 @@ declare var $:any;//Declaro esto para usar las funciones que haya hecho con Jque
 
 export class NavbarComponent implements OnInit {
 
-  constructor() { 
+  constructor(private cuentaService: CuentaService) {
   }
 
   ngOnInit() {
+    $(document).ready(function () {
+      
+      $("#menuPrincipal a:not(.dropdown-toggle)").click(function () {
+        $(".navbar-toggler").addClass("collapsed");
+        $("#navbarSupportedContent").removeClass("show", 250);
+      });
+
+      $("#btnAtractivo").click(function () {
+        OpenAtractivos();
+      });
+
+      $("#btnPlanta").click(function () {
+        OpenPlanta();
+      });
+    });
   }
-  
+
+  logout() {
+    this.cuentaService.logout();
+  }
+
 }

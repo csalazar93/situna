@@ -1,0 +1,15 @@
+div.contenedor-login{
+    padding-right:250px;
+    align-self: center;
+}
+
+div.contenedor-login h1{
+    text-align: center;
+}
+
+
+@media (max-width: 720px) {
+    div.contenedor-login{
+        padding: 0;
+    }
+}

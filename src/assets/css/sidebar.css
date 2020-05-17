@@ -1,0 +1,273 @@
+body {
+    margin: 0;
+    font-family: "Yu Gothic UI";
+}
+
+.sidebar {
+    margin: 0;
+    padding: 0;
+    width: 250px;
+    background-color: #507c5b !important;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+
+.sidebar a {
+    display: block;
+    color: black;
+    padding: 16px;
+    text-decoration: none;
+    font-weight:bold;
+    /*Color de fuente*/
+    color: white !important;
+}
+
+.sidebar a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.sidebar a:hover:not(.active) {
+    background-color: #507c5b !important;
+    color: white;
+}
+
+div.content {
+    margin-left: 250px;
+    padding: 1px 16px;
+    height: 100%;
+}
+
+.navbar-toggler {
+    float: right;
+    margin-top: 1rem;
+    margin-right: 1rem;
+}
+
+.iconoMenu {
+    width: 80px !important;
+    height: 45px !important;
+    margin-top: -6px !important;
+}
+
+.linkLogo {
+    float: left !important;
+    width: 100%;
+}
+
+/*Footer*/
+.piePagina {
+    margin-left: 250px;
+    padding: 1px 16px;
+    display: block !important;
+    background-color: #507c5b !important;
+    height: 40px !important;
+}
+
+.piePagina .pieNombre {
+    color: ghostwhite !important;
+    font-weight: bold;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.piePagina .pieNombre a{
+    color: ghostwhite !important;
+    font-weight: bold;
+}
+
+.piePagina .pieNombre a:hover{
+    color: dodgerblue !important;
+    /*font-weight: bold;*/
+}
+/*Fin Footer*/
+
+.cerrarBoton {
+    position:fixed;
+    bottom:2.45rem;
+    width:250px;
+}
+
+
+/*// Adaptación a dispositivos móviles
+// Aplicar el responsive con media queries
+
+// Small devices (landscape phones, 576px and up)*/
+@media (min-width: 991px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: fixed;
+        top: 0;
+        z-index:1;/*Poner menu al frente del content*/
+    }
+
+    .sidebar a {
+        text-align: center;
+        float: none;
+    }
+
+    div.content {
+        margin-left: 0;
+        margin-top: 5rem;
+    }
+
+    .collapse {
+        display: none !important;
+    }
+
+    .navbar-toggler {
+        display: block;
+    }
+
+    .linkLogo {
+        float: left !important;
+        width:auto;
+    }
+
+    .piePagina {
+        margin-left: auto;
+    }
+
+    .cerrarBoton {
+        position: static;
+        width: 100%;
+    }
+}
+
+@media (max-width: 991px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: fixed;
+        top: 0;
+        z-index: 1; /*Poner menu al frente del content*/
+    }
+
+    .sidebar a {
+        text-align: center;
+        float: none;
+    }
+
+    div.content {
+        margin-left: 0;
+        margin-top: 5rem;
+    }
+    
+    .navbar-toggler {
+        display: block;
+    }
+
+    .linkLogo {
+        float: left !important;
+        width: auto;
+    }
+
+    .piePagina {
+        margin-left: auto;
+    }
+
+    .cerrarBoton {
+        position: static;
+        width: 100%;
+    }
+}
+
+/*// Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+    .sidebar {
+        margin: 0;
+        padding: 0;
+        width: 250px;
+        position: fixed;
+        height: 100%;
+        overflow: auto;
+    }
+
+    .sidebar a {
+        display: block;
+        color: black;
+        padding: 16px;
+        text-decoration: none;
+    }
+
+    div.content {
+        margin-left: 250px;
+        padding: 1px 16px;
+        height: 100%;
+        margin-top: 1rem;
+    }
+
+    .collapse {
+        display: block !important;
+    }
+
+    .navbar-toggler {
+        display: none;
+    }
+
+    .linkLogo {
+        float: left !important;
+        width: 100%;
+    }
+
+    .piePagina {
+        margin-left: 250px;
+    }
+
+    .cerrarBoton {
+        position: fixed;
+        bottom: 2.45rem;
+        width: 250px;
+    }
+}
+
+/*// Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+    .sidebar {
+        margin: 0;
+        padding: 0;
+        width: 250px;
+        position: fixed;
+        height: 100%;
+        overflow: auto;
+    }
+
+    .sidebar a {
+        display: block;
+        color: black;
+        padding: 16px;
+        text-decoration: none;
+    }
+
+    div.content {
+        margin-left: 250px;
+        padding: 1px 16px;
+        height: 100%;
+        margin-top: 1rem;
+    }
+
+    .collapse {
+        display: block !important;
+    }
+
+    .navbar-toggler {
+        display: none;
+    }
+
+    .linkLogo {
+        float: left !important;
+        width: 100%;
+    }
+
+    .piePagina {
+        margin-left: 250px;
+    }
+
+    .cerrarBoton {
+        position: fixed;
+        bottom: 2.45rem;
+        width: 250px;
+    }
+}

@@ -1,0 +1,1568 @@
+<div class="container-fluid html body">
+
+  <section id="sec1" class="row">
+    <div class="form-group">
+      <h3 class="text-center mt-3"><strong>Ficha de inventario para planta turística</strong></h3>
+
+      <div class="row">
+        <div class="form-group col-sm">
+          <label for="numFicha"><strong>Número de ficha</strong></label>
+          <input type="text" name="numFicha" id="numFicha" class="form-control" value="FPT-00000001" readonly>
+        </div>
+        <div class="form-group col-sm">
+          <label for="fecha"><strong>Fecha</strong></label>
+          <input type="date" name="fecha" id="fecha" class="form-control">
+        </div>
+        <div class="form-group col-sm">
+          <label for="investigador"><strong>Investigador</strong></label>
+          <input type="text" name="investigador" id="investigador" class="form-control">
+        </div>
+      </div>
+
+      <div class="form-group text-justify">
+        <p>
+          <strong>Presentación:</strong> Buenos días / Buenas tardes. Mi nombre es <strong
+            id="nombreInvestigador">CRISTHIAN SALAZAR</strong>, soy <strong id="rolUsuario">ESTUDIANTE</strong>
+          de la Universidad Nacional; estoy realizando una investigación como parte del proyecto <strong>Análisis
+            Territorial del Sistema Turístico de la Región Brunca</strong>.
+          Por esta razón, le solicito unos minutos de su tiempo para realizarle unas preguntas sobre su negocio. Los
+          resultados se presentarán de manera general, respetando la confidencialidad
+          de las respuestas individuales.
+        </p>
+      </div>
+
+      <div class="form-group">
+        <a class="btnSection btn btn-primary hvr-icon-forward" [routerLink]="['/fichas/crud-planta/planta-insert']"
+          fragment="sec2">Siguiente <i class="fas fa-chevron-circle-right hvr-icon"></i></a>
+      </div>
+
+
+    </div>
+  </section>
+
+  <section id="sec2" class="row ocultoS">
+    <div class="form-group">
+      <h3 class="mt-3 mb-3 text-center"><strong>Módulo de Información General</strong></h3>
+      <div class="form-group">
+        <label for="nomProyecto"><strong>1. Nombre del proyecto:</strong></label>
+        <input type="text" name="nomProyecto" id="nomProyecto" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="nomPropietario"><strong>2. Nombre de propietario o representante legal:</strong></label>
+        <input type="text" name="nomPropietario" id="nomPropietario" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="numsTelefono"><strong>3. Teléfonos del negocio:</strong></label>
+        <button class="btn btn-primary agregar" data-toggle="tooltip" data-placement="top" title="Agregar teléfono"><i
+            class="fas fa-plus" (click)="MostrarFormContacto(1)"></i></button>
+
+        <div id="formTelefonos" *ngIf="nuevoContacto && tipoContacto === 1">
+          <input class="form-control mb-2" type="tel" id="contactoPlanta" name="contactoPlanta"
+            [(ngModel)]='contactosModel.contacto' placeholder="Formato: 1234-5678" pattern="[0-9]{4}-[0-9]{4}">
+
+          <button *ngIf="editarContacto; else elseBlock" class="btn btn-success mr-2" data-toggle="tooltip"
+            data-placement="top" title="Editar registro"
+            (click)="ActualizarContacto(contactosModel.id, contactosModel.contacto)">Editar teléfono <i
+              class="fas fa-pen-square"></i></button>
+
+          <ng-template #elseBlock>
+            <button class="btn btn-success mr-2" data-toggle="tooltip" data-placement="top" title="Agregar a la lista"
+              (click)="RegistrarContacto(contactosModel.contacto)">Agregar teléfono <i class="fas fa-save"></i></button>
+          </ng-template>
+
+          <button class="btn btn-danger mr-2" data-toggle="tooltip" data-placement="top" title="Cancelar registro"
+            (click)="CancelarRegistroContacto()">Cancelar <i class="far fa-times-circle"></i></button>
+
+        </div>
+
+        <div class="row" id="numsTelefono">
+          <div class="col-sm-4" *ngFor="let tel of FiltrarListaTipo(1)">
+
+            <label for=""><i class="fas fa-phone-alt"></i> {{tel.contacto}}</label>
+            <button class="btn btn-primary mr-2 agregar" data-toggle="tooltip" data-placement="top"
+              title="Eliminar registro" (click)="EliminarRegistroContacto(tel.id, tel.contacto, tel.tipo)"><i
+                class="far fa-trash-alt" style="color:white;"></i></button>
+            <button class="btn btn-primary mr-2 agregar" data-toggle="tooltip" data-placement="top"
+              title="Editar registro" (click)="EditarRegistroContacto(tel.id, tel.contacto, tel.tipo)"><i
+                class="fas fa-pencil-alt"></i></button>
+
+          </div>
+        </div>
+
+      </div>
+
+      <div class="form-group">
+        <label for="emails"><strong>4. Correo electrónico:</strong></label>
+        <button class="btn btn-primary agregar" data-toggle="tooltip" data-placement="top"
+          title="Agregar correo electrónico" (click)="MostrarFormContacto(2)"><i class="fas fa-plus"></i></button>
+
+        <div id="formEmails" *ngIf="nuevoContacto && tipoContacto === 2">
+          <input class="form-control mb-2" type="email" id="emailPlanta" name="emailPlanta"
+            [(ngModel)]='contactosModel.contacto' placeholder="Formato: correo@servidor.com">
+
+          <button *ngIf="editarContacto; else elseBlock" class="btn btn-success mr-2" data-toggle="tooltip"
+            data-placement="top" title="Editar registro"
+            (click)="ActualizarContacto(contactosModel.id, contactosModel.contacto)">Editar correo <i
+              class="fas fa-pen-square"></i></button>
+
+          <ng-template #elseBlock>
+            <button class="btn btn-success mr-2" data-toggle="tooltip" data-placement="top" title="Agregar a la lista"
+              (click)="RegistrarContacto(contactosModel.contacto)">Agregar correo <i class="fas fa-save"></i></button>
+          </ng-template>
+
+          <button class="btn btn-danger mr-2" data-toggle="tooltip" data-placement="top" title="Cancelar registro"
+            (click)="CancelarRegistroContacto()">Cancelar <i class="far fa-times-circle"></i></button>
+
+        </div>
+
+        <div class="row" id="emails">
+          <div class="col-sm-4" *ngFor="let tel of FiltrarListaTipo(2)">
+
+            <label for=""><i class="fas fa-envelope"></i> {{tel.contacto}}</label>
+            <button class="btn btn-primary mr-2 agregar" data-toggle="tooltip" data-placement="top"
+              title="Eliminar registro" (click)="EliminarRegistroContacto(tel.id, tel.contacto, tel.tipo)"><i
+                class="far fa-trash-alt" style="color:white;"></i></button>
+            <button class="btn btn-primary mr-2 agregar" data-toggle="tooltip" data-placement="top"
+              title="Editar registro" (click)="EditarRegistroContacto(tel.id, tel.contacto, tel.tipo)"><i
+                class="fas fa-pencil-alt"></i></button>
+
+          </div>
+        </div>
+
+      </div>
+
+      <div class="form-group">
+        <label for="whatsapp"><strong>5. Contacto de WhatsApp:</strong></label>
+        <button class="btn btn-primary agregar" data-toggle="tooltip" data-placement="top" title="Agregar WhatsApp"><i
+            class="fas fa-plus" (click)="MostrarFormContacto(3)"></i></button>
+
+        <div id="formWhatsapp" *ngIf="nuevoContacto && tipoContacto === 3">
+          <input class="form-control mb-2" type="tel" id="whatsAppPlanta" name="whatsAppPlanta"
+            [(ngModel)]='contactosModel.contacto' placeholder="Formato: 1234-5678" pattern="[0-9]{4}-[0-9]{4}">
+
+          <button *ngIf="editarContacto; else elseBlock" class="btn btn-success mr-2" data-toggle="tooltip"
+            data-placement="top" title="Editar registro"
+            (click)="ActualizarContacto(contactosModel.id, contactosModel.contacto)">Editar WhatsApp <i
+              class="fas fa-pen-square"></i></button>
+
+          <ng-template #elseBlock>
+            <button class="btn btn-success mr-2" data-toggle="tooltip" data-placement="top" title="Agregar a la lista"
+              (click)="RegistrarContacto(contactosModel.contacto)">Agregar WhatsApp <i class="fas fa-save"></i></button>
+          </ng-template>
+
+          <button class="btn btn-danger mr-2" data-toggle="tooltip" data-placement="top" title="Cancelar registro"
+            (click)="CancelarRegistroContacto()">Cancelar <i class="far fa-times-circle"></i></button>
+
+        </div>
+
+        <div class="row" id="whatsapp">
+          <div class="col-sm-4" *ngFor="let tel of FiltrarListaTipo(3)">
+
+            <label for=""><i class="fab fa-whatsapp-square"></i> {{tel.contacto}}</label>
+            <button class="btn btn-primary mr-2 agregar" data-toggle="tooltip" data-placement="top"
+              title="Eliminar registro" (click)="EliminarRegistroContacto(tel.id, tel.contacto, tel.tipo)"><i
+                class="far fa-trash-alt" style="color:white;"></i></button>
+            <button class="btn btn-primary mr-2 agregar" data-toggle="tooltip" data-placement="top"
+              title="Editar registro" (click)="EditarRegistroContacto(tel.id, tel.contacto, tel.tipo)"><i
+                class="fas fa-pencil-alt"></i></button>
+
+          </div>
+        </div>
+
+      </div>
+
+      <div class="form-group">
+        <label for="paginas"><strong>6. Página web:</strong></label>
+        <button class="btn btn-primary agregar" data-toggle="tooltip" data-placement="top" title="Agregar página web"><i
+            class="fas fa-plus" (click)="MostrarFormContacto(4)"></i></button>
+
+        <div id="formPaginas" *ngIf="nuevoContacto && tipoContacto === 4">
+          <input class="form-control mb-2" type="text" id="paginaPlanta" name="emailPlanta"
+            [(ngModel)]='contactosModel.contacto' placeholder="Formato: www.pagina.com">
+
+          <button *ngIf="editarContacto; else elseBlock" class="btn btn-success mr-2" data-toggle="tooltip"
+            data-placement="top" title="Editar registro"
+            (click)="ActualizarContacto(contactosModel.id, contactosModel.contacto)">Editar página <i
+              class="fas fa-pen-square"></i></button>
+
+          <ng-template #elseBlock>
+            <button class="btn btn-success mr-2" data-toggle="tooltip" data-placement="top" title="Agregar a la lista"
+              (click)="RegistrarContacto(contactosModel.contacto)">Agregar página <i class="fas fa-save"></i></button>
+          </ng-template>
+
+          <button class="btn btn-danger mr-2" data-toggle="tooltip" data-placement="top" title="Cancelar registro"
+            (click)="CancelarRegistroContacto()">Cancelar <i class="far fa-times-circle"></i></button>
+
+        </div>
+
+        <div class="row" id="paginas">
+          <div class="col-sm-4" *ngFor="let tel of FiltrarListaTipo(4)">
+
+            <label for=""><i class="fas fa-globe"></i> {{tel.contacto}}</label>
+            <button class="btn btn-primary mr-2 agregar" data-toggle="tooltip" data-placement="top"
+              title="Eliminar registro" (click)="EliminarRegistroContacto(tel.id, tel.contacto, tel.tipo)"><i
+                class="far fa-trash-alt" style="color:white;"></i></button>
+            <button class="btn btn-primary mr-2 agregar" data-toggle="tooltip" data-placement="top"
+              title="Editar registro" (click)="EditarRegistroContacto(tel.id, tel.contacto, tel.tipo)"><i
+                class="fas fa-pencil-alt"></i></button>
+
+          </div>
+        </div>
+
+      </div>
+
+      <div class="form-group">
+        <a class="btnSection btn btn-primary hvr-icon-back" [routerLink]="['/fichas/crud-planta/planta-insert']" fragment="sec1"><i
+            class="fas fa-chevron-circle-left hvr-icon"></i> Anterior</a>
+        <a class="btnSection btn btn-primary hvr-icon-forward" [routerLink]="['/fichas/crud-planta/planta-insert']" fragment="sec3">Siguiente <i class="fas fa-chevron-circle-right hvr-icon"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="sec3" class="row ocultoS">
+    <div class="form-group">
+      <h3 class="mt-3 mb-3 text-center"><strong>Módulo de Información General</strong></h3>
+
+      <div class="row">
+        <!--Datos sobre dirección-->
+        <div class="form-group col-sm">
+          <label for="provincia"><strong>7. Provincia:</strong></label>
+          <select name="provincia" id="provincia" class="custom-select">
+            <option value="01">San José</option>
+          </select>
+        </div>
+
+        <div class="form-group col-sm">
+          <label for="canton"><strong>8. Cantón:</strong></label>
+          <select name="canton" id="canton" class="custom-select">
+            <option value="01">Pérez Zeledón</option>
+          </select>
+        </div>
+
+        <div class="form-group col-sm">
+          <label for="distrito"><strong>9. Distrito:</strong></label>
+          <select name="distrito" id="distrito" class="custom-select">
+            <option value="01">Daniel Flores</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="localidad"><strong>10. Localidad:</strong></label>
+        <textarea class="form-control" name="localidad" id="localidad" cols="30" rows="1"></textarea>
+      </div>
+
+
+      <div class="form-group">
+        <label><strong>PARA LAS COORDENADAS UTILIZAR DATOS DEL GPS</strong></label>
+        <button class="btn btn-primary ml-2 agregar" title="Actualizar ubicaciòn" (click)="ObtenerLocalizacion()">
+          <i class="fas fa-map-marker-alt"></i>
+        </button>
+      </div>
+
+      <div class="row">
+        <div class="col-sm form-group">
+          <label for="latitud"><strong>11. Latitud:</strong></label>
+          <input type="text" name="latitudPlanta" id="latitudPlanta" class="form-control">
+        </div>
+        <div class="col-sm form-group">
+          <label for="longitud"><strong>12. Longitud:</strong></label>
+          <input type="text" name="longitudPlanta" id="longitudPlanta" class="form-control">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm form-group">
+          <label for="cantHombres"><strong>13. ¿Actualmente cuántos hombres laboran en este proyecto?</strong></label>
+          <input type="number" min="0" name="cantHombres" id="cantHombres" class="form-control" value="0">
+        </div>
+        <div class="col-sm form-group">
+          <label for="cantMujeres"><strong>14. ¿Actualmente cuántas mujeres laboran en este proyecto?</strong></label>
+          <input type="number" min="0" name="cantMujeres" id="cantMujeres" class="form-control" value="0">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <a class="btnSection btn btn-primary hvr-icon-back" [routerLink]="['/fichas/crud-planta/planta-insert']" fragment="sec2"><i
+            class="fas fa-chevron-circle-left hvr-icon"></i> Anterior</a>
+        <a class="btnSection btn btn-primary hvr-icon-forward" [routerLink]="['/fichas/crud-planta/planta-insert']"
+          fragment="sec4">Siguiente <i class="fas fa-chevron-circle-right hvr-icon"></i></a>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="sec4" class="row ocultoS">
+    <div class="form-group">
+      <h3 class="mt-3 mb-3 text-center"><strong>Servicios de la planta</strong></h3>
+
+      <label>15. ¿Cuáles de los siguientes servicios se brindan hoy día en este negocio? <strong>LEER UNO A UNO LOS
+          SERVICIOS AL INFORMANTE Y SELECCIONAR</strong></label>
+
+      <div class="row listaServicios">
+        <div class="form-group col-sm">
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" name="servicioPlanta" id="banioPrivado" value="1">
+            <label class="custom-control-label" for="banioPrivado">1. Baño privado.</label>
+          </div>
+
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" name="servicioPlanta" id="aireAcondicionado" value="2">
+            <label class="custom-control-label" for="aireAcondicionado">2. Aire acondicionado.</label>
+          </div>
+
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" name="servicioPlanta" id="bar" value="3">
+            <label class="custom-control-label" for="bar">3. Bar.</label>
+          </div>
+
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" name="servicioPlanta" id="abanico" value="4">
+            <label class="custom-control-label" for="abanico">7. Abanico.</label>
+          </div>
+
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" name="servicioPlanta" id="lavanderia" value="5">
+            <label class="custom-control-label" for="lavanderia">4. Lavandería.</label>
+          </div>
+
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" name="servicioPlanta" id="aguaCaliente" value="6">
+            <label class="custom-control-label" for="aguaCaliente">5. Agua caliente.</label>
+          </div>
+
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" name="servicioPlanta" id="cableTV" value="7">
+            <label class="custom-control-label" for="cableTV">6. Cable TV / TV.</label>
+          </div>
+
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" name="servicioPlanta" id="discoteca" value="8">
+            <label class="custom-control-label" for="discoteca">8. Discoteca.</label>
+          </div>
+
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" name="servicioPlanta" id="juegosNinos" value="9">
+            <label class="custom-control-label" for="juegosNinos">9. Juegos de niños.</label>
+          </div>
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" name="servicioPlanta" id="autoservicio" value="10">
+            <label class="custom-control-label" for="autoservicio">10. Autoservicio.</label>
+          </div>
+
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" name="servicioPlanta" id="wifi" value="11">
+            <label class="custom-control-label" for="wifi">11. Wi-Fi (Internet) (Velocidad en MB).</label>
+          </div>
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" name="servicioPlanta" id="servicioTelefono" value="12">
+            <label class="custom-control-label" for="servicioTelefono">12. Servicio telefónico.</label>
+          </div>
+
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" name="servicioPlanta" id="piscina" value="13">
+            <label class="custom-control-label" for="piscina">13. Piscina.</label>
+          </div>
+
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" name="servicioPlanta" id="restaurante" value="14">
+            <label class="custom-control-label" for="restaurante">14. Restaurante.</label>
+          </div>
+
+        </div>
+
+        <div class="form-group col-sm">
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" name="servicioPlanta" id="tiendaSouvenirs" value="15">
+            <label class="custom-control-label" for="tiendaSouvenirs">15. Tienda de souvenirs.</label>
+          </div>
+
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" name="servicioPlanta" id="cajasSeguridad" value="16">
+            <label class="custom-control-label" for="cajasSeguridad">16. Cajas de seguridad.</label>
+          </div>
+
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" name="servicioPlanta" id="servicio24" value="17">
+            <label class="custom-control-label" for="servicio24">17. Servicio 24 horas.</label>
+          </div>
+
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" name="servicioPlanta" id="servicioHabitacion"
+              value="18">
+            <label class="custom-control-label" for="servicioHabitacion">18. Servicio habitación.</label>
+          </div>
+
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" name="servicioPlanta" id="salaConferencias" value="19">
+            <label class="custom-control-label" for="salaConferencias">19. Sala de conferencias.</label>
+          </div>
+
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" name="servicioPlanta" id="gimnasio" value="20">
+            <label class="custom-control-label" for="gimnasio">20. Gimnasio.</label>
+          </div>
+
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" name="servicioPlanta" id="parqueo" value="21">
+            <label class="custom-control-label" for="parqueo">21. Parqueo.</label>
+          </div>
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" name="servicioPlanta" id="spaYOtros" value="22">
+            <label class="custom-control-label" for="spaYOtros">22. Spa / Masajes / Yoga / Jacuzzi.</label>
+          </div>
+
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" name="servicioPlanta" id="guiasCertificados" value="23">
+            <label class="custom-control-label" for="guiasCertificados">23. Guías turísticos certificados.</label>
+          </div>
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" name="servicioPlanta" id="tours" value="24">
+            <label class="custom-control-label" for="tours">24. Tours.</label>
+          </div>
+
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" name="servicioPlanta" id="sistemaReservaciones"
+              value="25">
+            <label class="custom-control-label" for="sistemaReservaciones">25. Sistema de reservaciones.</label>
+          </div>
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" name="servicioPlanta" id="areaFumado" value="26">
+            <label class="custom-control-label" for="areaFumado">26. Área de fumado.</label>
+          </div>
+
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" name="servicioPlanta" id="tarjetaCredito" value="27">
+            <label class="custom-control-label" for="tarjetaCredito">27. Tarjeta de crédito.</label>
+          </div>
+
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" name="servicioPlanta" id="otrosSP" value="28">
+            <label class="custom-control-label" for="otrosSP">28. Otros.</label>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="observacionesServicios">Observaciones obtenidas en la selección de los servicios:</label>
+        <textarea class="form-control" name="observacionesServicios" id="observacionesServicios" cols="30"
+          rows="2"></textarea>
+      </div>
+
+      <div class="form-group">
+        <a class="btnSection btn btn-primary hvr-icon-back" [routerLink]="['/fichas/crud-planta/planta-insert']" fragment="sec3"><i
+            class="fas fa-chevron-circle-left hvr-icon"></i> Anterior</a>
+        <a class="btnSection btn btn-primary hvr-icon-forward" [routerLink]="['/fichas/crud-planta/planta-insert']"
+          fragment="sec5">Siguiente <i class="fas fa-chevron-circle-right hvr-icon"></i></a>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="sec5" class="row ocultoS">
+    <div class="form-group">
+      <h3 class="mt-3 mb-3 text-center"><strong>Categorías de la planta</strong></h3>
+      <div class="row">
+
+        <div class="form-group col-sm">
+          <label>16. En cuál de las siguientes categorías se clasifica este negocio? <strong> PUEDE MARCAR VARIAS EN LA
+              COLUMNA P16</strong></label>
+          <label class="text-center"><strong>P16. Categorías</strong></label>
+
+          <fieldset class="form-group">
+
+            <div class="custom-control custom-checkbox">
+              <input class="custom-control-input" type="checkbox" name="categoriaPlanta" id="alojamiento" value="1">
+              <label class="custom-control-label" for="alojamiento">1. Alojamiento.</label>
+            </div>
+
+            <div class="custom-control custom-checkbox">
+              <input class="custom-control-input" type="checkbox" name="categoriaPlanta" id="alimentacion" value="2">
+              <label class="custom-control-label" for="alimentacion">2. Alimentaciòn.</label>
+            </div>
+
+            <div class="custom-control custom-checkbox">
+              <input class="custom-control-input" type="checkbox" name="categoriaPlanta" id="espacimiento" value="3">
+              <label class="custom-control-label" for="espacimiento">3. Esparcimiento.</label>
+            </div>
+
+            <div class="custom-control custom-checkbox">
+              <input class="custom-control-input" type="checkbox" name="categoriaPlanta" id="otrosServicios" value="4">
+              <label class="custom-control-label" for="otrosServicios">4. Otros servicios.</label>
+            </div>
+
+            <div class="custom-control custom-checkbox">
+              <input class="custom-control-input" type="checkbox" name="categoriaPlanta" id="instalacionesMontania"
+                value="5">
+              <label class="custom-control-label" for="instalacionesMontania">5. Instalaciones de montaña.</label>
+            </div>
+
+            <div class="custom-control custom-checkbox">
+              <input class="custom-control-input" type="checkbox" name="categoriaPlanta" id="instalacionesGenerales"
+                value="6">
+              <label class="custom-control-label" for="instalacionesGenerales">6. Instalaciones generales.</label>
+            </div>
+
+          </fieldset>
+
+        </div>
+
+        <div class="form-group col-sm">
+          <label>17. En cuál de las siguientes subcategorias se clasifica este proyecto? <strong> PUEDE MARCAR VARIAS EN
+              LA COLUMNA P17</strong></label>
+          <label class="text-center"><strong>P17. Subcategorìas</strong></label>
+
+          <div class="ocultoC" id="c1">
+
+            <label for="">1. Alojamiento</label>
+
+            <fieldset class="form-group">
+
+              <div class="custom-control custom-checkbox">
+                <input class="custom-control-input" type="checkbox" name="subcategoriaPlanta" id="c1Hoteles" value="1">
+                <label class="custom-control-label" for="c1Hoteles">1.1. Hoteles.</label>
+              </div>
+
+              <div class="custom-control custom-checkbox">
+                <input class="custom-control-input" type="checkbox" name="subcategoriaPlanta" id="c1SegundaResidencia"
+                  value="2">
+                <label class="custom-control-label" for="c1SegundaResidencia">1.2. Casas de segunda residencia.</label>
+              </div>
+
+              <div class="custom-control custom-checkbox">
+                <input class="custom-control-input" type="checkbox" name="subcategoriaPlanta" id="c1Cabanias" value="3">
+                <label class="custom-control-label" for="c1Cabanias">1.3. Cabañas (En un entorno de montaña).</label>
+              </div>
+
+              <div class="custom-control custom-checkbox">
+                <input class="custom-control-input" type="checkbox" name="subcategoriaPlanta" id="c1Albergues"
+                  value="4">
+                <label class="custom-control-label" for="c1Albergues">1.4. Albergues.</label>
+              </div>
+
+              <div class="custom-control custom-checkbox">
+                <input class="custom-control-input" type="checkbox" name="subcategoriaPlanta" id="c1Camping" value="5">
+                <label class="custom-control-label" for="c1Camping">1.5. Camping.</label>
+              </div>
+
+              <div class="custom-control custom-checkbox">
+                <input class="custom-control-input" type="checkbox" name="subcategoriaPlanta" id="c1CamasFamilia"
+                  value="6">
+                <label class="custom-control-label" for="c1CamasFamilia">1.6. Camas en casas de familia.</label>
+              </div>
+
+            </fieldset>
+
+          </div>
+
+          <div class="ocultoC" id="c2">
+
+            <label for="">2. Alimentación</label>
+
+            <fieldset class="form-group">
+
+              <div class="custom-control custom-checkbox">
+                <input class="custom-control-input" type="checkbox" name="subcategoriaPlanta" id="c2Restaurantes"
+                  value="7">
+                <label class="custom-control-label" for="c2Restaurantes">2.7. Restaurantes.</label>
+              </div>
+
+              <div class="custom-control custom-checkbox">
+                <input class="custom-control-input" type="checkbox" name="subcategoriaPlanta" id="c2Sodas" value="8">
+                <label class="custom-control-label" for="c2Sodas">2.8. Sodas.</label>
+              </div>
+
+              <div class="custom-control custom-checkbox">
+                <input class="custom-control-input" type="checkbox" name="subcategoriaPlanta" id="c2ComidaTipica"
+                  value="9">
+                <label class="custom-control-label" for="c2ComidaTipica">2.9. Establecimientos de comidas
+                  tìpicas.</label>
+              </div>
+
+            </fieldset>
+
+          </div>
+
+          <div class="ocultoC" id="c3">
+
+            <label for="">3. Esparcimiento</label>
+
+            <fieldset class="form-group">
+
+              <div class="custom-control custom-checkbox">
+                <input class="custom-control-input" type="checkbox" name="subcategoriaPlanta" id="c3Discotecas"
+                  value="10">
+                <label class="custom-control-label" for="c3Discotecas">3.10. Discotecas.</label>
+              </div>
+
+              <div class="custom-control custom-checkbox">
+                <input class="custom-control-input" type="checkbox" name="subcategoriaPlanta" id="c3Bares" value="11">
+                <label class="custom-control-label" for="c3Bares">3.11. Bares.</label>
+              </div>
+
+
+            </fieldset>
+
+          </div>
+
+          <div class="ocultoC" id="c4">
+
+            <label for="">4. Otros servicios</label>
+
+            <fieldset class="form-group">
+
+              <div class="custom-control custom-checkbox">
+                <input class="custom-control-input" type="checkbox" name="subcategoriaPlanta" id="c4Guias" value="12">
+                <label class="custom-control-label" for="c4Guias">4.12. Guìas.</label>
+              </div>
+
+              <div class="custom-control custom-checkbox">
+                <input class="custom-control-input" type="checkbox" name="subcategoriaPlanta" id="c4OficinasTurista"
+                  value="13">
+                <label class="custom-control-label" for="c4OficinasTurista">4.13. Oficinas de información para el
+                  turista.</label>
+              </div>
+
+              <div class="custom-control custom-checkbox">
+                <input class="custom-control-input" type="checkbox" name="subcategoriaPlanta" id="c4TiendaSouvenirs"
+                  value="14">
+                <label class="custom-control-label" for="c4TiendaSouvenirs">4.14. Comercio: Tienda de Souvernis.</label>
+              </div>
+
+              <div class="custom-control custom-checkbox">
+                <input class="custom-control-input" type="checkbox" name="subcategoriaPlanta" id="c4Transfers"
+                  value="15">
+                <label class="custom-control-label" for="c4Transfers">4.15. Transportes turísticos (Transfers).</label>
+              </div>
+
+              <div class="custom-control custom-checkbox">
+                <input class="custom-control-input" type="checkbox" name="subcategoriaPlanta" id="c4PrimerosAuxilios"
+                  value="16">
+                <label class="custom-control-label" for="c4PrimerosAuxilios">4.16. Primeros auxilios.</label>
+              </div>
+
+              <div class="custom-control custom-checkbox">
+                <input class="custom-control-input" type="checkbox" name="subcategoriaPlanta" id="c4Guarderias"
+                  value="17">
+                <label class="custom-control-label" for="c4Guarderias">4.17. Guarderías.</label>
+              </div>
+
+              <div class="custom-control custom-checkbox">
+                <input class="custom-control-input" type="checkbox" name="subcategoriaPlanta" id="c4Estacionamientos"
+                  value="18">
+                <label class="custom-control-label" for="c4Estacionamientos">4.18. Estacionamientos.</label>
+              </div>
+
+            </fieldset>
+
+          </div>
+
+          <div class="ocultoC" id="c5">
+
+            <label for="">5. Instalaciones de montaña</label>
+
+            <fieldset class="form-group">
+
+              <div class="custom-control custom-checkbox">
+                <input class="custom-control-input" type="checkbox" name="subcategoriaPlanta" id="c5Miradores"
+                  value="19">
+                <label class="custom-control-label" for="c5Miradores">5.19. Miradores.</label>
+              </div>
+
+              <div class="custom-control custom-checkbox">
+                <input class="custom-control-input" type="checkbox" name="subcategoriaPlanta" id="c5Senderos"
+                  value="20">
+                <label class="custom-control-label" for="c5Senderos">5.20. Senderos.</label>
+              </div>
+
+              <div class="custom-control custom-checkbox">
+                <input class="custom-control-input" type="checkbox" name="subcategoriaPlanta" id="c5AreaPicnic"
+                  value="21">
+                <label class="custom-control-label" for="c5AreaPicnic">5.21. Área de picnic.</label>
+              </div>
+
+            </fieldset>
+
+          </div>
+
+          <div class="ocultoC" id="c6">
+
+            <label for="">6. Instalaciones generales</label>
+
+            <fieldset class="form-group">
+
+              <div class="custom-control custom-checkbox">
+                <input class="custom-control-input" type="checkbox" name="subcategoriaPlanta" id="c6Piscinas"
+                  value="22">
+                <label class="custom-control-label" for="c6Piscinas">6.22. Piscinas.</label>
+              </div>
+
+              <div class="custom-control custom-checkbox">
+                <input class="custom-control-input" type="checkbox" name="subcategoriaPlanta" id="c6Vestuarios"
+                  value="23">
+                <label class="custom-control-label" for="c6Vestuarios">6.23. Vestuarios.</label>
+              </div>
+
+              <div class="custom-control custom-checkbox">
+                <input class="custom-control-input" type="checkbox" name="subcategoriaPlanta" id="c6JuegosInfantiles"
+                  value="24">
+                <label class="custom-control-label" for="c6JuegosInfantiles">6.24. Juegos infantiles.</label>
+              </div>
+
+              <div class="custom-control custom-checkbox">
+                <input class="custom-control-input" type="checkbox" name="subcategoriaPlanta" id="c6PlazasFutbol"
+                  value="25">
+                <label class="custom-control-label" for="c6PlazasFutbol">6.25. Plazas de futbol.</label>
+              </div>
+
+              <div class="custom-control custom-checkbox">
+                <input class="custom-control-input" type="checkbox" name="subcategoriaPlanta" id="c6Otros" value="26">
+                <label class="custom-control-label" for="c6Otros">6.26. Otros.</label>
+              </div>
+
+            </fieldset>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="form-group">
+        <a class="btnSection btn btn-primary hvr-icon-back" [routerLink]="['/fichas/crud-planta/planta-insert']" fragment="sec4"><i
+            class="fas fa-chevron-circle-left hvr-icon"></i> Anterior</a>
+        <a class="btnSection btn btn-primary hvr-icon-forward" [routerLink]="['/fichas/crud-planta/planta-insert']"
+          fragment="sec6">Siguiente <i class="fas fa-chevron-circle-right hvr-icon"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="sec6" class="row ocultoS">
+    <div class="form-group">
+      <h3 class="mt-3 mb-3 text-center"><strong>Categorías de la planta</strong></h3>
+
+      <div class="form-group">
+        <label for="nomProyecto"><strong>18. EN CASO DE INDICAR VARIAS CATEGORIAS</strong>, ¿Cuál de las siguientes
+          categorás mencionadas le genera más ingreso a este negocio?</label>
+        <fieldset class="row">
+          <div class="form-group col-sm">
+            <div class="custom-control custom-radio custom-control">
+              <input class="custom-control-input" type="radio" name="catMasIngresos" id="miAlojamiento" value="1">
+              <label class="custom-control-label" for="miAlojamiento">1. Alojamiento</label>
+            </div>
+
+            <div class="custom-control custom-radio custom-control">
+              <input class="custom-control-input" type="radio" name="catMasIngresos" id="miAlimentacion" value="2">
+              <label class="custom-control-label" for="miAlimentacion">2. Alimentación</label>
+            </div>
+          </div>
+
+          <div class="form-group col-sm">
+            <div class="custom-control custom-radio custom-control">
+              <input class="custom-control-input" type="radio" name="catMasIngresos" id="miEsparcimientomiAlimentacion"
+                value="3">
+              <label class="custom-control-label" for="miEsparcimientomiAlimentacion">3. Esparcimiento</label>
+            </div>
+
+            <div class="custom-control custom-radio custom-control">
+              <input class="custom-control-input" type="radio" name="catMasIngresos" id="miOtrosServicios" value="4">
+              <label class="custom-control-label" for="miOtrosServicios">4. Otros servicios</label>
+            </div>
+          </div>
+
+          <div class="form-group col-sm">
+            <div class="custom-control custom-radio custom-control">
+              <input class="custom-control-input" type="radio" name="catMasIngresos" id="miInstalacionesMontaña"
+                value="5">
+              <label class="custom-control-label" for="miInstalacionesMontaña">5. Instalaciones de montaña</label>
+            </div>
+
+            <div class="custom-control custom-radio custom-control">
+              <input class="custom-control-input" type="radio" name="catMasIngresos" id="miInstalacionesGenerales"
+                value="6">
+              <label class="custom-control-label" for="miInstalacionesGenerales">6. Instalaciones generales</label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+
+      <label for="nomProyecto"><strong>19. ¿Cuáles son los tres (3) meses en que su empresa tiene MAYORES
+          INGRESOS?</strong></label>
+      <fieldset class="row">
+
+        <div class="form-group col-sm">
+          <div class="custom-control custom-checkbox custom-control">
+            <input class="custom-control-input" type="checkbox" name="mesMayorIngreso" id="maxEnero" value="1"
+              onchange="ValidarCantidadCheckMayorIngresoMeses()">
+            <label class="custom-control-label" for="maxEnero">1. Enero</label>
+          </div>
+
+          <div class="custom-control custom-checkbox custom-control">
+            <input class="custom-control-input" type="checkbox" name="mesMayorIngreso" id="maxFebrero" value="2"
+              onchange="ValidarCantidadCheckMayorIngresoMeses()">
+            <label class="custom-control-label" for="maxFebrero">2. Febrero</label>
+          </div>
+
+          <div class="custom-control custom-checkbox custom-control">
+            <input class="custom-control-input" type="checkbox" name="mesMayorIngreso" id="maxMarzo" value="1"
+              onchange="ValidarCantidadCheckMayorIngresoMeses()">
+            <label class="custom-control-label" for="maxMarzo">3. Marzo</label>
+          </div>
+
+          <div class="custom-control custom-checkbox custom-control">
+            <input class="custom-control-input" type="checkbox" name="mesMayorIngreso" id="maxAbril" value="2"
+              onchange="ValidarCantidadCheckMayorIngresoMeses()">
+            <label class="custom-control-label" for="maxAbril">4. Abril</label>
+          </div>
+        </div>
+
+        <div class="form-group col-sm">
+          <div class="custom-control custom-checkbox custom-control">
+            <input class="custom-control-input" type="checkbox" name="mesMayorIngreso" id="maxMayo" value="3"
+              onchange="ValidarCantidadCheckMayorIngresoMeses()">
+            <label class="custom-control-label" for="maxMayo">5. Mayo</label>
+          </div>
+
+          <div class="custom-control custom-checkbox custom-control">
+            <input class="custom-control-input" type="checkbox" name="mesMayorIngreso" id="maxJunio" value="4"
+              onchange="ValidarCantidadCheckMayorIngresoMeses()">
+            <label class="custom-control-label" for="maxJunio">6. Junio</label>
+          </div>
+
+          <div class="custom-control custom-checkbox custom-control">
+            <input class="custom-control-input" type="checkbox" name="mesMayorIngreso" id="maxJulio" value="1"
+              onchange="ValidarCantidadCheckMayorIngresoMeses()">
+            <label class="custom-control-label" for="maxJulio">7. Julio</label>
+          </div>
+
+          <div class="custom-control custom-checkbox custom-control">
+            <input class="custom-control-input" type="checkbox" name="mesMayorIngreso" id="maxAgosto" value="2"
+              onchange="ValidarCantidadCheckMayorIngresoMeses()">
+            <label class="custom-control-label" for="maxAgosto">8. Agosto</label>
+          </div>
+        </div>
+
+        <div class="form-group col-sm">
+          <div class="custom-control custom-checkbox custom-control">
+            <input class="custom-control-input" type="checkbox" name="mesMayorIngreso" id="maxSetiembre" value="5"
+              onchange="ValidarCantidadCheckMayorIngresoMeses()">
+            <label class="custom-control-label" for="maxSetiembre">9. Setiembre</label>
+          </div>
+
+          <div class="custom-control custom-checkbox custom-control">
+            <input class="custom-control-input" type="checkbox" name="mesMayorIngreso" id="maxOctubre" value="6"
+              onchange="ValidarCantidadCheckMayorIngresoMeses()">
+            <label class="custom-control-label" for="maxOctubre">10. Octubre</label>
+          </div>
+
+          <div class="custom-control custom-checkbox custom-control">
+            <input class="custom-control-input" type="checkbox" name="mesMayorIngreso" id="maxNoviembre" value="1"
+              onchange="ValidarCantidadCheckMayorIngresoMeses()">
+            <label class="custom-control-label" for="maxNoviembre">11. Noviembre</label>
+          </div>
+
+          <div class="custom-control custom-checkbox custom-control">
+            <input class="custom-control-input" type="checkbox" name="mesMayorIngreso" id="maxDiciembre" value="2"
+              onchange="ValidarCantidadCheckMayorIngresoMeses()">
+            <label class="custom-control-label" for="maxDiciembre">12. Diciembre</label>
+          </div>
+        </div>
+
+      </fieldset>
+
+      <label for="nomProyecto"><strong>20. ¿Cuáles son los tres (3) meses en que su empresa tiene MENORES
+          INGRESOS?</strong></label>
+      <fieldset class="row">
+
+        <div class="form-group col-sm">
+          <div class="custom-control custom-checkbox custom-control">
+            <input class="custom-control-input" type="checkbox" name="mesMenorIngreso" id="menEnero" value="1"
+              onchange="ValidarCantidadCheckMenorIngresoMeses()">
+            <label class="custom-control-label" for="menEnero">1. Enero</label>
+          </div>
+
+          <div class="custom-control custom-checkbox custom-control">
+            <input class="custom-control-input" type="checkbox" name="mesMenorIngreso" id="menFebrero" value="2"
+              onchange="ValidarCantidadCheckMenorIngresoMeses()">
+            <label class="custom-control-label" for="menFebrero">2. Febrero</label>
+          </div>
+
+          <div class="custom-control custom-checkbox custom-control">
+            <input class="custom-control-input" type="checkbox" name="mesMenorIngreso" id="menMarzo" value="3"
+              onchange="ValidarCantidadCheckMenorIngresoMeses()">
+            <label class="custom-control-label" for="menMarzo">3. Marzo</label>
+          </div>
+
+          <div class="custom-control custom-checkbox custom-control">
+            <input class="custom-control-input" type="checkbox" name="mesMenorIngreso" id="menAbril" value="4"
+              onchange="ValidarCantidadCheckMenorIngresoMeses()">
+            <label class="custom-control-label" for="menAbril">4. Abril</label>
+          </div>
+        </div>
+
+        <div class="form-group col-sm">
+          <div class="custom-control custom-checkbox custom-control">
+            <input class="custom-control-input" type="checkbox" name="mesMenorIngreso" id="menMayo" value="5"
+              onchange="ValidarCantidadCheckMenorIngresoMeses()">
+            <label class="custom-control-label" for="menMayo">5. Mayo</label>
+          </div>
+
+          <div class="custom-control custom-checkbox custom-control">
+            <input class="custom-control-input" type="checkbox" name="mesMenorIngreso" id="menJunio" value="6"
+              onchange="ValidarCantidadCheckMenorIngresoMeses()">
+            <label class="custom-control-label" for="menJunio">6. Junio</label>
+          </div>
+
+          <div class="custom-control custom-checkbox custom-control">
+            <input class="custom-control-input" type="checkbox" name="mesMenorIngreso" id="menJulio" value="7"
+              onchange="ValidarCantidadCheckMenorIngresoMeses()">
+            <label class="custom-control-label" for="menJulio">7. Julio</label>
+          </div>
+
+          <div class="custom-control custom-checkbox custom-control">
+            <input class="custom-control-input" type="checkbox" name="mesMenorIngreso" id="menAgosto" value="8"
+              onchange="ValidarCantidadCheckMenorIngresoMeses()">
+            <label class="custom-control-label" for="menAgosto">8. Agosto</label>
+          </div>
+        </div>
+
+        <div class="form-group col-sm">
+          <div class="custom-control custom-checkbox custom-control">
+            <input class="custom-control-input" type="checkbox" name="mesMenorIngreso" id="menSetiembre" value="9"
+              onchange="ValidarCantidadCheckMenorIngresoMeses()">
+            <label class="custom-control-label" for="menSetiembre">9. Setiembre</label>
+          </div>
+
+          <div class="custom-control custom-checkbox custom-control">
+            <input class="custom-control-input" type="checkbox" name="mesMenorIngreso" id="menOctubre" value="10"
+              onchange="ValidarCantidadCheckMenorIngresoMeses()">
+            <label class="custom-control-label" for="menOctubre">10. Octubre</label>
+          </div>
+
+          <div class="custom-control custom-checkbox custom-control">
+            <input class="custom-control-input" type="checkbox" name="mesMenorIngreso" id="menNoviembre" value="11"
+              onchange="ValidarCantidadCheckMenorIngresoMeses()">
+            <label class="custom-control-label" for="menNoviembre">11. Noviembre</label>
+          </div>
+
+          <div class="custom-control custom-checkbox custom-control">
+            <input class="custom-control-input" type="checkbox" name="mesMenorIngreso" id="menDiciembre" value="12"
+              onchange="ValidarCantidadCheckMenorIngresoMeses()">
+            <label class="custom-control-label" for="menDiciembre">12. Diciembre</label>
+          </div>
+        </div>
+
+      </fieldset>
+
+      <div class="form-group">
+        <a class="btnSection btn btn-primary hvr-icon-back" [routerLink]="['/fichas/crud-planta/planta-insert']" fragment="sec5"><i
+            class="fas fa-chevron-circle-left hvr-icon"></i> Anterior</a>
+        <a class="btnSection btn btn-primary hvr-icon-forward" [routerLink]="['/fichas/crud-planta/planta-insert']"
+          fragment="sec7">Siguiente <i class="fas fa-chevron-circle-right hvr-icon"></i></a>
+      </div>
+    </div>
+
+  </section>
+
+  <section id="sec7" class="row ocultoS">
+    <div class="form-group">
+      <h3 class="mt-3 mb-3 text-center"><strong>Alojamiento</strong></h3>
+
+      <div class="form-group">
+        <label for="nomProyecto">21. ¿Cuántas habitaciones tiene el proyecto actualmente?</label>
+        <div class="row">
+          <div class="col-sm form-group">
+            <label for="habSencilla">1. Sencilla (Cama Individual)</label>
+            <input class="form-control" type="number" id="habSencilla" name="habSencilla">
+          </div>
+          <div class="col-sm form-group">
+            <label for="habDoble">2. Doble (Cama matrimonial o dos individuales)</label>
+            <input class="form-control" type="number" id="habDoble" name="habDoble">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm form-group">
+            <label for="habTriple">3. Triple (Matrimonial y sencilla)</label>
+            <input class="form-control" type="number" id="habTriple" name="habTriple">
+          </div>
+          <div class="col-sm form-group">
+            <label for="habCuadruple">4. Cuádruples (Dos camas matrimoniales)</label>
+            <input class="form-control" type="number" id="habCuadruple" name="habCuadruple">
+          </div>
+        </div>
+      </div>
+
+      <h3 class="mt-3 mb-3 text-center"><strong>Alimentación</strong></h3>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-sm form-group">
+            <label for="nomProyecto">22. ¿Actualmente cuántas personas puede atender al mismo tiempo?</label>
+          </div>
+          <div class="col-sm form-group">
+            <input class="form-control" type="number" id="cantAtiende" name="cantAtiende">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <a class="btnSection btn btn-primary hvr-icon-back" [routerLink]="['/fichas/crud-planta/planta-insert']" fragment="sec6"><i
+            class="fas fa-chevron-circle-left hvr-icon"></i> Anterior</a>
+        <a class="btnSection btn btn-primary hvr-icon-forward" [routerLink]="['/fichas/crud-planta/planta-insert']"
+          fragment="sec8">Siguiente <i class="fas fa-chevron-circle-right hvr-icon"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="sec8" class="row ocultoS">
+    <div class="form-group">
+      <h3 class="mt-3 mb-3 text-center"><strong>Cumplimiento de la legislación</strong></h3>
+
+      <div class="form-group">
+        <label for="nomProyecto">23. Por favor indique el grado de cumplimiento de este negocio para cada uno de las
+          siguientes leyes o normativas. LEER UNA POR UNA LAS NORMATIVAS</label>
+
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered table-hover">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col" class="text-center" style="width: 60%;">Normativa</th>
+                <th scope="col" class="text-center">Grado de cumplimiento</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Permisos y normativa establecida por la Municipalidad</th>
+                <td class="text-center">
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input class="custom-control-input" type="radio" name="normativa1" id="normativa1100" value="100%">
+                    <label class="custom-control-label" for="normativa1100">100%</label>
+                  </div>
+
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input class="custom-control-input" type="radio" name="normativa1" id="normativa175" value="75%">
+                    <label class="custom-control-label" for="normativa175">75%</label>
+                  </div>
+
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input class="custom-control-input" type="radio" name="normativa1" id="normativa150" value="50%">
+                    <label class="custom-control-label" for="normativa150">50%</label>
+                  </div>
+
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input class="custom-control-input" type="radio" name="normativa1" id="normativa125" value="25%">
+                    <label class="custom-control-label" for="normativa125">25%</label>
+                  </div>
+
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input class="custom-control-input" type="radio" name="normativa1" id="normativa10" value="0%">
+                    <label class="custom-control-label" for="normativa10">0%</label>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Planes y protocolos de primeros auxilios</th>
+                <td class="text-center">
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input class="custom-control-input" type="radio" name="normativa2" id="normativa2100" value="100%">
+                    <label class="custom-control-label" for="normativa2100">100%</label>
+                  </div>
+
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input class="custom-control-input" type="radio" name="normativa2" id="normativa275" value="75%">
+                    <label class="custom-control-label" for="normativa275">75%</label>
+                  </div>
+
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input class="custom-control-input" type="radio" name="normativa2" id="normativa250" value="50%">
+                    <label class="custom-control-label" for="normativa250">50%</label>
+                  </div>
+
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input class="custom-control-input" type="radio" name="normativa2" id="normativa225" value="25%">
+                    <label class="custom-control-label" for="normativa225">25%</label>
+                  </div>
+
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input class="custom-control-input" type="radio" name="normativa2" id="normativa20" value="0%">
+                    <label class="custom-control-label" for="normativa20">0%</label>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Proceso de facturación electrónica</th>
+                <td class="text-center">
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input class="custom-control-input" type="radio" name="normativa3" id="normativa3100" value="100%">
+                    <label class="custom-control-label" for="normativa3100">100%</label>
+                  </div>
+
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input class="custom-control-input" type="radio" name="normativa3" id="normativa375" value="75%">
+                    <label class="custom-control-label" for="normativa375">75%</label>
+                  </div>
+
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input class="custom-control-input" type="radio" name="normativa3" id="normativa350" value="50%">
+                    <label class="custom-control-label" for="normativa350">50%</label>
+                  </div>
+
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input class="custom-control-input" type="radio" name="normativa3" id="normativa325" value="25%">
+                    <label class="custom-control-label" for="normativa325">25%</label>
+                  </div>
+
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input class="custom-control-input" type="radio" name="normativa3" id="normativa30" value="0%">
+                    <label class="custom-control-label" for="normativa30">0%</label>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Declaraciones y pagos de impuestos</th>
+                <td class="text-center">
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input class="custom-control-input" type="radio" name="normativa4" id="normativa4100" value="100%">
+                    <label class="custom-control-label" for="normativa4100">100%</label>
+                  </div>
+
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input class="custom-control-input" type="radio" name="normativa4" id="normativa475" value="75%">
+                    <label class="custom-control-label" for="normativa475">75%</label>
+                  </div>
+
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input class="custom-control-input" type="radio" name="normativa4" id="normativa450" value="50%">
+                    <label class="custom-control-label" for="normativa450">50%</label>
+                  </div>
+
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input class="custom-control-input" type="radio" name="normativa4" id="normativa425" value="25%">
+                    <label class="custom-control-label" for="normativa425">25%</label>
+                  </div>
+
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input class="custom-control-input" type="radio" name="normativa4" id="normativa40" value="0%">
+                    <label class="custom-control-label" for="normativa40">0%</label>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Requerimientos establecidos en la ley 7600 de Igualdad de oportunidades para las
+                  personas con discapacidad</th>
+                <td class="text-center">
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input class="custom-control-input" type="radio" name="normativa5" id="normativa5100" value="100%">
+                    <label class="custom-control-label" for="normativa5100">100%</label>
+                  </div>
+
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input class="custom-control-input" type="radio" name="normativa5" id="normativa575" value="75%">
+                    <label class="custom-control-label" for="normativa575">75%</label>
+                  </div>
+
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input class="custom-control-input" type="radio" name="normativa5" id="normativa550" value="50%">
+                    <label class="custom-control-label" for="normativa550">50%</label>
+                  </div>
+
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input class="custom-control-input" type="radio" name="normativa5" id="normativa525" value="25%">
+                    <label class="custom-control-label" for="normativa525">25%</label>
+                  </div>
+
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input class="custom-control-input" type="radio" name="normativa5" id="normativa50" value="0%">
+                    <label class="custom-control-label" for="normativa50">0%</label>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Rotulación sobre la regulación de fumado</th>
+                <td class="text-center">
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input class="custom-control-input" type="radio" name="normativa6" id="normativa6100" value="100%">
+                    <label class="custom-control-label" for="normativa6100">100%</label>
+                  </div>
+
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input class="custom-control-input" type="radio" name="normativa6" id="normativa675" value="75%">
+                    <label class="custom-control-label" for="normativa675">75%</label>
+                  </div>
+
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input class="custom-control-input" type="radio" name="normativa6" id="normativa650" value="50%">
+                    <label class="custom-control-label" for="normativa650">50%</label>
+                  </div>
+
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input class="custom-control-input" type="radio" name="normativa6" id="normativa625" value="25%">
+                    <label class="custom-control-label" for="normativa625">25%</label>
+                  </div>
+
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input class="custom-control-input" type="radio" name="normativa6" id="normativa60" value="0%">
+                    <label class="custom-control-label" for="normativa60">0%</label>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Requerimientos sobre la ley 7476 contra el hostigamiento o acoso sexual en el empleo
+                </th>
+                <td class="text-center">
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input class="custom-control-input" type="radio" name="normativa7" id="normativa7100" value="100%">
+                    <label class="custom-control-label" for="normativa7100">100%</label>
+                  </div>
+
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input class="custom-control-input" type="radio" name="normativa7" id="normativa775" value="75%">
+                    <label class="custom-control-label" for="normativa775">75%</label>
+                  </div>
+
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input class="custom-control-input" type="radio" name="normativa7" id="normativa750" value="50%">
+                    <label class="custom-control-label" for="normativa750">50%</label>
+                  </div>
+
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input class="custom-control-input" type="radio" name="normativa7" id="normativa725" value="25%">
+                    <label class="custom-control-label" for="normativa725">25%</label>
+                  </div>
+
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input class="custom-control-input" type="radio" name="normativa7" id="normativa70" value="0%">
+                    <label class="custom-control-label" for="normativa70">0%</label>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Marcas registradas en el registro público</th>
+                <td class="text-center">
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input class="custom-control-input" type="radio" name="normativa8" id="normativa8100" value="100%">
+                    <label class="custom-control-label" for="normativa8100">100%</label>
+                  </div>
+
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input class="custom-control-input" type="radio" name="normativa8" id="normativa875" value="75%">
+                    <label class="custom-control-label" for="normativa875">75%</label>
+                  </div>
+
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input class="custom-control-input" type="radio" name="normativa8" id="normativa850" value="50%">
+                    <label class="custom-control-label" for="normativa850">50%</label>
+                  </div>
+
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input class="custom-control-input" type="radio" name="normativa8" id="normativa825" value="25%">
+                    <label class="custom-control-label" for="normativa825">25%</label>
+                  </div>
+
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input class="custom-control-input" type="radio" name="normativa8" id="normativa80" value="0%">
+                    <label class="custom-control-label" for="normativa80">0%</label>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Proceso de declaratoria turística</th>
+                <td class="text-center">
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input class="custom-control-input" type="radio" name="normativa9" id="normativa9100" value="100%">
+                    <label class="custom-control-label" for="normativa9100">100%</label>
+                  </div>
+
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input class="custom-control-input" type="radio" name="normativa9" id="normativa975" value="75%">
+                    <label class="custom-control-label" for="normativa975">75%</label>
+                  </div>
+
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input class="custom-control-input" type="radio" name="normativa9" id="normativa950" value="50%">
+                    <label class="custom-control-label" for="normativa950">50%</label>
+                  </div>
+
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input class="custom-control-input" type="radio" name="normativa9" id="normativa925" value="25%">
+                    <label class="custom-control-label" for="normativa925">25%</label>
+                  </div>
+
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input class="custom-control-input" type="radio" name="normativa9" id="normativa90" value="0%">
+                    <label class="custom-control-label" for="normativa90">0%</label>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+
+      <div class="form-group">
+        <a class="btnSection btn btn-primary hvr-icon-back" [routerLink]="['/fichas/crud-planta/planta-insert']" fragment="sec7"><i
+            class="fas fa-chevron-circle-left hvr-icon"></i> Anterior</a>
+        <a class="btnSection btn btn-primary hvr-icon-forward" [routerLink]="['/fichas/crud-planta/planta-insert']"
+          fragment="sec9">Siguiente <i class="fas fa-chevron-circle-right hvr-icon"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="sec9" class="row ocultoS">
+    <div class="form-group">
+      <h3 class="mt-3 mb-3 text-center"><strong>Cumplimiento de la legislación</strong></h3>
+
+      <label for="nomProyecto">24. ¿Este negocio cuenta con alguna certificación o práctica amigable con el
+        ambiente?</label>
+      <fieldset class="form-group">
+
+        <div class="custom-control custom-control-inline custom-radio">
+          <input class="custom-control-input" type="radio" name="cuentaCertificacon" id="certificacionSi" value="0">
+          <label class="custom-control-label" for="certificacionSi">0. No.</label>
+        </div>
+
+        <div class="custom-control custom-control-inline custom-radio">
+          <input class="custom-control-input" type="radio" name="cuentaCertificacon" id="certificacionNo" value="1">
+          <label class="custom-control-label" for="certificacionNo">1. Sí.</label>
+        </div>
+
+        <div class="ocultoP">
+
+          <label class="tituloOcultoP">¿Cual?</label>
+
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" name="practicaAmigable" id="paCST" value="1">
+            <label style="text-indent: 0rem;" class="custom-control-label" for="paCST">1. CST.</label>
+          </div>
+
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" name="practicaAmigable" id="paBanderaAzul" value="2">
+            <label class="custom-control-label" for="paBanderaAzul">2. Bandera Azul.</label>
+          </div>
+
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" name="practicaAmigable" id="paCNeutral" value="3">
+            <label class="custom-control-label" for="paCNeutral">3. Carbono neutral.</label>
+          </div>
+
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" name="practicaAmigable" id="paOtra" value="4">
+            <label class="custom-control-label" for="paOtra">4. Otra:</label>
+            <textarea class="ocultoOtra form-control" name="descripcionOtra" id="descripcionOtra" cols="30"
+              rows="1"></textarea>
+          </div>
+        </div>
+      </fieldset>
+
+      <div class="form-group">
+        <a class="btnSection btn btn-primary hvr-icon-back" [routerLink]="['/fichas/crud-planta/planta-insert']" fragment="sec8"><i
+            class="fas fa-chevron-circle-left hvr-icon"></i> Anterior</a>
+        <a class="btnSection btn btn-primary hvr-icon-forward" [routerLink]="['/fichas/crud-planta/planta-insert']"
+          fragment="sec10">Siguiente <i class="fas fa-chevron-circle-right hvr-icon"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="sec10" class="row ocultoS">
+    <div class="form-group">
+      <h3 class="mt-3 mb-3 text-center"><strong>Otros datos</strong></h3>
+
+      <div class="form-group">
+        <label for="nomProyecto">25. Por favor indique su grado de acuerdo o en desacuerdo en recibir estudiantes de la
+          Universidad Nacional (UNA) para que realicen la Práctica Profesional Supervisada (PPS) o trabajos de
+          investigación en cada una de las siguientes carreras. LEER UNA POR UNA LAS CARRERAS</label>
+
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered table-hover">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col" class="text-center" style="width: 40%;">Carrera</th>
+                <th scope="col" class="text-center">1. Totalmente en desacuerdo</th>
+                <th scope="col" class="text-center">2. En desacuerdo</th>
+                <th scope="col" class="text-center">3. Ni de acuerdo ni desacuerdo</th>
+                <th scope="col" class="text-center">4. De acuerdo</th>
+                <th scope="col" class="text-center">5. Totalmente de acuerdo</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr>
+                <th scope="row">Administración de Empresas</th>
+                <td>
+                  <div class="custom-control custom-radio text-center">
+                    <input class="custom-control-input" type="radio" name="carrera1" id="carrera11" value="1">
+                    <label class="custom-control-label" for="carrera11"></label>
+                  </div>
+                </td>
+
+                <td>
+                  <div class="custom-control custom-radio text-center">
+                    <input class="custom-control-input" type="radio" name="carrera1" id="carrera12" value="2">
+                    <label class="custom-control-label" for="carrera12"></label>
+                  </div>
+                </td>
+
+                <td>
+                  <div class="custom-control custom-radio text-center">
+                    <input class="custom-control-input" type="radio" name="carrera1" id="carrera13" value="3">
+                    <label class="custom-control-label" for="carrera13"></label>
+                  </div>
+                </td>
+
+                <td>
+                  <div class="custom-control custom-radio text-center">
+                    <input class="custom-control-input" type="radio" name="carrera1" id="carrera14" value="4">
+                    <label class="custom-control-label" for="carrera14"></label>
+                  </div>
+                </td>
+
+                <td>
+                  <div class="custom-control custom-radio text-center">
+                    <input class="custom-control-input" type="radio" name="carrera1" id="carrera15" value="5">
+                    <label class="custom-control-label" for="carrera15"></label>
+                  </div>
+                </td>
+
+              </tr>
+
+              <tr>
+                <th scope="row">Gestión Turística Sostenible</th>
+                <td>
+                  <div class="custom-control custom-radio text-center">
+                    <input class="custom-control-input" type="radio" name="carrera2" id="carrera21" value="1">
+                    <label class="custom-control-label" for="carrera21"></label>
+                  </div>
+                </td>
+
+                <td>
+                  <div class="custom-control custom-radio text-center">
+                    <input class="custom-control-input" type="radio" name="carrera2" id="carrera22" value="2">
+                    <label class="custom-control-label" for="carrera22"></label>
+                  </div>
+                </td>
+
+                <td>
+                  <div class="custom-control custom-radio text-center">
+                    <input class="custom-control-input" type="radio" name="carrera2" id="carrera23" value="3">
+                    <label class="custom-control-label" for="carrera23"></label>
+                  </div>
+                </td>
+
+                <td>
+                  <div class="custom-control custom-radio text-center">
+                    <input class="custom-control-input" type="radio" name="carrera2" id="carrera24" value="4">
+                    <label class="custom-control-label" for="carrera24"></label>
+                  </div>
+                </td>
+
+                <td>
+                  <div class="custom-control custom-radio text-center">
+                    <input class="custom-control-input" type="radio" name="carrera2" id="carrera25" value="5">
+                    <label class="custom-control-label" for="carrera25"></label>
+                  </div>
+                </td>
+
+              </tr>
+
+              <tr>
+                <th scope="row">Ingeniería en Sistemas de Información</th>
+                <td>
+                  <div class="custom-control custom-radio text-center">
+                    <input class="custom-control-input" type="radio" name="carrera3" id="carrera31" value="1">
+                    <label class="custom-control-label" for="carrera31"></label>
+                  </div>
+                </td>
+
+                <td>
+                  <div class="custom-control custom-radio text-center">
+                    <input class="custom-control-input" type="radio" name="carrera3" id="carrera32" value="2">
+                    <label class="custom-control-label" for="carrera32"></label>
+                  </div>
+                </td>
+
+                <td>
+                  <div class="custom-control custom-radio text-center">
+                    <input class="custom-control-input" type="radio" name="carrera3" id="carrera33" value="3">
+                    <label class="custom-control-label" for="carrera33"></label>
+                  </div>
+                </td>
+
+                <td>
+                  <div class="custom-control custom-radio text-center">
+                    <input class="custom-control-input" type="radio" name="carrera3" id="carrera34" value="4">
+                    <label class="custom-control-label" for="carrera34"></label>
+                  </div>
+                </td>
+
+                <td>
+                  <div class="custom-control custom-radio text-center">
+                    <input class="custom-control-input" type="radio" name="carrera3" id="carrera35" value="5">
+                    <label class="custom-control-label" for="carrera35"></label>
+                  </div>
+                </td>
+
+              </tr>
+
+              <tr>
+                <th scope="row">Inglés (Bachillerato o Diplomado)</th>
+                <td>
+                  <div class="custom-control custom-radio text-center">
+                    <input class="custom-control-input" type="radio" name="carrera4" id="carrera41" value="1">
+                    <label class="custom-control-label" for="carrera41"></label>
+                  </div>
+                </td>
+
+                <td>
+                  <div class="custom-control custom-radio text-center">
+                    <input class="custom-control-input" type="radio" name="carrera4" id="carrera42" value="2">
+                    <label class="custom-control-label" for="carrera42"></label>
+                  </div>
+                </td>
+
+                <td>
+                  <div class="custom-control custom-radio text-center">
+                    <input class="custom-control-input" type="radio" name="carrera4" id="carrera43" value="3">
+                    <label class="custom-control-label" for="carrera43"></label>
+                  </div>
+                </td>
+
+                <td>
+                  <div class="custom-control custom-radio text-center">
+                    <input class="custom-control-input" type="radio" name="carrera4" id="carrera44" value="4">
+                    <label class="custom-control-label" for="carrera44"></label>
+                  </div>
+                </td>
+
+                <td>
+                  <div class="custom-control custom-radio text-center">
+                    <input class="custom-control-input" type="radio" name="carrera4" id="carrera45" value="5">
+                    <label class="custom-control-label" for="carrera45"></label>
+                  </div>
+                </td>
+
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+        <label for="nomProyecto">26. Cuál es el principal atractivo de esta zona geográfica para los turistas?</label>
+        <input type="text" name="principalAtractivo" id="principalAtractivo" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <a class="btnSection btn btn-primary hvr-icon-back" [routerLink]="['/fichas/crud-planta/planta-insert']" fragment="sec9"><i
+            class="fas fa-chevron-circle-left hvr-icon"></i> Anterior</a>
+        <a class="btnSection btn btn-primary hvr-icon-fade" [routerLink]="['/fichas/crud-planta/planta-insert']" fragment="sec1">Aplicar
+          ficha <i class="fas fa-save hvr-icon"></i></a>
+      </div>
+    </div>
+  </section>
+
+</div>

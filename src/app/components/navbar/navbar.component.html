@@ -1,62 +1,73 @@
+<nav id="menuPrincipal" class="navbar-dark default-color sidebar">
 
 
-<!--Navbar -->
-<nav id="menuPrincipal" class="mb-1 navbar navbar-expand-lg navbar-dark default-color fixed-top">
-    <a class="navbar-brand" [routerLink]="['inicio']"><img class="logoPagina" src="./assets/img/una-png-7@2x.png" alt=""></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
-      aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" [routerLink]="['inicio']">Inicio
-            <span class="sr-only">(current)</span>
-          </a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" [routerLink]="['fichas']">Prueba geolocalización</a>
-        </li>
-        <li class="nav-item active" [routerLink]="['analisis']">
-          <a class="nav-link">Análisis</a>
-        </li>
-        <!--<li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
-        </li>-->
-        <li class="nav-item dropdown active">
-          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">Fichas de inventario
-          </a>
-          <div class="dropdown-menu dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
-            <a class="dropdown-item" [routerLink]="['fichas/planta/']">Planta Turística</a>
-            <a class="dropdown-item" [routerLink]="['fichas/atractivo/']">Atractivo Turístico</a>
-          </div>
-        </li>
-      </ul>
-      <ul class="navbar-nav ml-auto nav-flex-icons">
-        <li class="nav-item">
-          <a class="nav-link waves-effect waves-light">
-            <i class="fab fa-twitter"></i>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link waves-effect waves-light">
-            <i class="fab fa-google-plus-g"></i>
-          </a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-user"></i>
-          </a>
-          <div class="dropdown-menu dropdown-menu-right dropdown-default"
-            aria-labelledby="navbarDropdownMenuLink-333">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </nav>
-  <!--/.Navbar -->
+  <ul class="linkLogo navbar-nav mr-auto">
+    <li class="nav-item hvr-shrink active">
+      <a class="navbar-brand" [routerLink]="['inicio']"><img class="logoPagina" src="./assets/img/una-png-7@2x.png"
+          alt=""></a>
+    </li>
+  </ul>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse" id="navbarSupportedContent" style="margin-top:4.5rem;">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" [routerLink]="['inicio']">INICIO
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+
+      <li class="nav-item dropdown active">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">FICHAS DE INVENTARIO
+        </a>
+        <div class="dropdown-menu dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
+          <a class="dropdown-item" [routerLink]="['fichas/crud-planta']">Planta Turística</a>
+          <a class="dropdown-item" [routerLink]="['fichas/crud-atractivo']">Atractivo Turístico</a>
+        </div>
+      </li>
+
+      <li class="nav-item active" [routerLink]="['reporteria']">
+        <a class="nav-link">REPORTERIA</a>
+      </li>
+
+      <li class="nav-item active" [routerLink]="['analisis']">
+        <a class="nav-link">ANALISIS</a>
+      </li>
+      <!--<li class="nav-item">
+        <a class="nav-link" href="#">Pricing</a>
+      </li>-->
+
+      <li class="nav-item active" [routerLink]="['analisis']">
+        <a class="nav-link">SOLICITUDES</a>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">
+          SISTEMA
+        </a>
+        <div class="dropdown-menu dropdown-menu-right dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
+          <a class="dropdown-item" href="#">USUARIOS</a>
+          <a class="dropdown-item" href="#">ROLES</a>
+          <a class="dropdown-item" href="#">ASIGNACION DE PERMISOS</a>
+        </div>
+      </li>
+
+      <li class="cerrarBoton nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">
+          CSALAZAR <i class="fas fa-user"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
+          <a class="dropdown-item" (click)="logout()" href="#">Cerrar</a>
+          <a class="dropdown-item" href="#">Configuración</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>

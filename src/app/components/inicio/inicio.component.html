@@ -1,5 +1,88 @@
-<div class="text-center">
-    <img class="imgInicio" src="./assets/img/una-png-7@2x.png" alt="">
-    <h1 >Bienvenidos al Sistema de Información Turística de la Universidad Nacional</h1>
-    <h1>SITUNA</h1>
+<div class="container mt-5">
+    <!--<div class="text-center">
+        <img class="imgInicio" src="./assets/img/una-png-7@2x.png" alt="">
+        <h1>Bienvenidos al Sistema de Información Turística de la Universidad Nacional</h1>
+        <h1>SITUNA</h1>
+
+
+    </div>-->
+
+    <h3 class="text-center mb-3"><strong>Opciones Principales</strong></h3>
+    <section id="menuPrincipal">
+        <div class="row">
+
+            <div class="col-sm-3 form-group">
+                <a class="hvr-icon-buzz-out" [routerLink]="['/fichas/home']">
+                    <div class="card border-success mb-3" style="max-width: 18rem;">
+                        <div class="card-header text-center font-weight-bold">Fichas de inventario</div>
+                        <div class="card-body text-success">
+                            <h1 class="card-title text-center"><i class="fas fa-file-signature hvr-icon"></i></h1>
+                            <p class="card-text text-justify">Mantenimiento completo de la Planta Turìstica y los
+                                Atractivos Turísticos.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-3 form-group">
+                <a class="hvr-icon-buzz-out" [routerLink]="['/servicios']">
+                    <div class="card border-success mb-3" style="max-width: 18rem;">
+                        <div class="card-header text-center font-weight-bold">Servicios Complementarios</div>
+                        <div class="card-body text-success">
+                            <h1 class="card-title text-center"><i class="fas fa-bus-alt hvr-icon"></i></h1>
+                            <p class="card-text text-justify">Registro de servicios relacionados a la planta y
+                                atractivos turìsticos.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-3 form-group">
+                <a class="hvr-icon-buzz-out" [routerLink]="['/reporteria']">
+                    <div class="card border-success mb-3" style="max-width: 18rem;">
+                        <div class="card-header text-center font-weight-bold">Reportería</div>
+                        <div class="card-body text-success">
+                            <h1 class="card-title text-center"><i class="fas fa-filter hvr-icon"></i></h1>
+                            <p class="card-text text-justify">Generación de reportes con cruce de variables, para
+                                anàlisis turístico.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-3 form-group">
+                <a class="hvr-icon-buzz-out" [routerLink]="['/analisis']">
+                    <div class="card border-success mb-3" style="max-width: 18rem;">
+                        <div class="card-header text-center font-weight-bold">Análisis</div>
+                        <div class="card-body text-success">
+                            <h1 class="card-title text-center"><i class="fas fa-chart-line hvr-icon"></i></h1>
+                            <p class="card-text text-justify">Módulo para análisis histórico de variables y muestra
+                                mediante dashboard.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-3 form-group">
+                <a class="hvr-icon-buzz-out" [routerLink]="['/solicitudes']">
+                    <div class="card border-success mb-3" style="max-width: 18rem;">
+                        <div class="card-header text-center font-weight-bold">Solicitudes</div>
+                        <div class="card-body text-success">
+                            <h1 class="card-title text-center"><i class="fas fa-bell hvr-icon"></i></h1>
+                            <p class="card-text text-justify">Módulo de gestión de las solicitudes de cambios en planta
+                                o atractivo registrados.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-3 form-group">
+                <a class="hvr-icon-buzz-out" [routerLink]="['/']">
+                    <div class="card border-success mb-3" style="max-width: 18rem;">
+                        <div class="card-header text-center font-weight-bold">Sistema</div>
+                        <div class="card-body text-success">
+                            <h1 class="card-title text-center"><i class="fas fa-tools hvr-icon"></i></h1>
+                            <p class="card-text text-justify">Gestión de usuarios, roles, y generación de perfiles de
+                                usuario, según el rol asignado.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
 </div>

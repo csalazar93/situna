@@ -1,4 +1,4 @@
-<nav id="menuPrincipal" class="navbar-dark default-color sidebar">
+<!--<nav id="menuPrincipal" class="navbar-dark default-color sidebar">
 
 
   <ul class="linkLogo navbar-nav mr-auto">
@@ -31,18 +31,22 @@
         </div>
       </li>
 
+      <li class="nav-item active" [routerLink]="['servicios']">
+        <a class="nav-link">SERVICIOS COMPLEMENTARIOS</a>
+        <span class="sr-only">(current)</span>
+      </li>
+
       <li class="nav-item active" [routerLink]="['reporteria']">
         <a class="nav-link">REPORTERIA</a>
+        <span class="sr-only">(current)</span>
       </li>
 
       <li class="nav-item active" [routerLink]="['analisis']">
         <a class="nav-link">ANALISIS</a>
+        <span class="sr-only">(current)</span>
       </li>
-      <!--<li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
-      </li>-->
 
-      <li class="nav-item active" [routerLink]="['analisis']">
+      <li class="nav-item active" [routerLink]="['solicitudes']">
         <a class="nav-link">SOLICITUDES</a>
       </li>
 
@@ -52,9 +56,9 @@
           SISTEMA
         </a>
         <div class="dropdown-menu dropdown-menu-right dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
-          <a class="dropdown-item" href="#">USUARIOS</a>
-          <a class="dropdown-item" href="#">ROLES</a>
-          <a class="dropdown-item" href="#">ASIGNACION DE PERMISOS</a>
+          <a class="dropdown-item" [routerLink]="['usuarios']">USUARIOS</a>
+          <a class="dropdown-item" [routerLink]="['roles']">ROLES</a>
+          <a class="dropdown-item" [routerLink]="['asignaciones']">ASIGNACION DE PERMISOS</a>
         </div>
       </li>
 
@@ -64,10 +68,45 @@
           CSALAZAR <i class="fas fa-user"></i>
         </a>
         <div class="dropdown-menu dropdown-menu-right dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
-          <a class="dropdown-item" (click)="logout()" href="#">Cerrar</a>
-          <a class="dropdown-item" href="#">Configuración</a>
+          <a class="dropdown-item" (click)="logout()">Cerrar</a>
+          <a class="dropdown-item" [routerLink]="['/perfil/', 1]">Configuración</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>-->
+
+<!--<nav id="menuPrincipal" class="navbar navbar-light bg-light">
+  <a class="navbar-brand hvr-icon-buzz-out" [routerLink]="['inicio']">
+    <img class="logoPagina hvr-icon" src="./assets/img/una-png-7@2x.png" width="70" height="35" class="d-inline-block align-top" alt="">
+     SITUNA
+  </a>
+</nav>-->
+
+<!--Navbar -->
+<nav id="menuPrincipal" class="navbar navbar-expand-lg navbar-dark default-color">
+  <a class="navbar-brand hvr-buzz" [routerLink]="['inicio']">
+    <img class="logoPagina" src="./assets/img/una-png-7@2x.png" width="70" height="35" class="d-inline-block align-top" alt="">
+     SITUNA
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
+    aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
+    <ul class="navbar-nav ml-auto nav-flex-icons">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle active hvr-icon-buzz-out" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          CSALAZAR <i class="fas fa-user hvr-icon"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right dropdown-default"
+          aria-labelledby="navbarDropdownMenuLink-333">
+          <a class="dropdown-item" (click)="logout()">Cerrar</a>
+          <a class="dropdown-item" [routerLink]="['/perfil/', 1]">Configuración</a>
         </div>
       </li>
     </ul>
   </div>
 </nav>
+<!--/.Navbar -->

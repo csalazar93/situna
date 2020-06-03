@@ -11,16 +11,17 @@
     height: 40px;
 }
 
-.dropdown-menu-center {
-    left: 50% !important;
-    right: auto !important;
-    text-align: center !important;
-    transform: translate(-50%, 0) !important;
-    position: absolute;
 
-  }
-
-  .dropdown-menu{
-    background-color: rgb(87, 127, 97);
-    color: white;
-  }
+/*Smooth Animation CSS Bootstrap https://bootsnipp.com/snippets/gNQz7*/
+.dropdown-menu {
+    display: block;
+    visibility: hidden;
+    opacity:0;
+    transform: translateY(50px);transition:.5s ease all;
+}
+.dropdown-menu.show {
+    display: block;
+    visibility: visible;
+    opacity:1;
+    transform: translateY(0px);transition:.5s ease all;
+}

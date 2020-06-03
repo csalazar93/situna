@@ -13,6 +13,8 @@ import {AtractivoComponent} from './components/fichasInventario/atractivoTuristi
 import {ListaAtractivosComponent} from './components/fichasInventario/atractivoTuristico/lista-atractivos/lista-atractivos.component';
 import {HomeAtractivoComponent} from './components/fichasInventario/atractivoTuristico/home-atractivo/home-atractivo.component';
 
+import {HomeFichasComponent} from './components/fichasInventario/home-fichas/home-fichas.component';
+
 import {HomeReportesComponent} from './components/reportes/home-reportes/home-reportes.component';
 import {ListaReportesComponent} from './components/reportes/lista-reportes/lista-reportes.component';
 
@@ -23,13 +25,52 @@ import {HomeSolicitudesComponent} from './components/solicitudes/home-solicitude
 import {ListaSolicitudesComponent} from './components/solicitudes/lista-solicitudes/lista-solicitudes.component';
 import {SolicitudComponent} from './components/solicitudes/solicitud/solicitud.component';
 
+
+import { HomeUsuariosComponent } from './components/usuarios/home-usuarios/home-usuarios.component';
+import { ListaUsuariosComponent } from './components/usuarios/lista-usuarios/lista-usuarios.component';
+import { UsuarioComponent } from './components/usuarios/usuario/usuario.component';
+
+import { HomeRolesComponent } from './components/roles/home-roles/home-roles.component';
+import { ListaRolesComponent } from './components/roles/lista-roles/lista-roles.component';
+import { RolComponent } from './components/roles/rol/rol.component';
+
+import { HomeAsignacionesComponent } from './components/asignacionPermisos/home-asignaciones/home-asignaciones.component';
+import { ListaAsignacionesComponent } from './components/asignacionPermisos/lista-asignaciones/lista-asignaciones.component';
+import { AsignarPermisosComponent } from './components/asignacionPermisos/asignar-permisos/asignar-permisos.component';
+
+import {HomeServiciosComponent} from './components/serviciosC/home-servicios/home-servicios.component';
+import {ListaServiciosComponent} from './components/serviciosC/lista-servicios/lista-servicios.component';
+import {ServicioComponent} from './components/serviciosC/servicio/servicio.component';
+
 import {LoginComponent} from './components/login/login.component';
 
 import {SitunaGuard} from './guards/situna.guard'
 
 //Importar los componentes para generar las rutas
 const routes: Routes = [
-  { path: '', component: InicioComponent, canActivate:[SitunaGuard]},
+
+  { path: 'usuarios', component: HomeUsuariosComponent, canActivate:[SitunaGuard], children:[
+    { path: 'lista', component: ListaUsuariosComponent},
+    { path: 'usuario/:id', component: UsuarioComponent },
+    { path: 'usuario-edit/:id', component: UsuarioComponent },
+    { path: 'usuario-insert', component: UsuarioComponent }
+  ]},
+
+  { path: 'perfil/:id', component: UsuarioComponent, canActivate:[SitunaGuard]},
+
+  { path: 'roles', component: HomeRolesComponent, canActivate:[SitunaGuard], children:[
+    { path: 'lista', component: ListaRolesComponent},
+    { path: 'rol/:id', component: RolComponent },
+    { path: 'rol-edit/:id', component: RolComponent },
+    { path: 'rol-insert', component: RolComponent }
+  ]},
+
+  { path: 'asignaciones', component: HomeAsignacionesComponent, canActivate:[SitunaGuard], children:[
+    { path: 'lista', component: ListaAsignacionesComponent},
+    { path: 'asignacion/:id', component: AsignarPermisosComponent },
+    { path: 'asignacion-edit/:id', component: AsignarPermisosComponent },
+    { path: 'asignacion-insert', component: AsignarPermisosComponent }
+  ]},
 
   { path: 'fichas/crud-atractivo', component: HomeAtractivoComponent, canActivate:[SitunaGuard], children:[
     { path: 'lista', component: ListaAtractivosComponent},
@@ -42,6 +83,8 @@ const routes: Routes = [
     { path: 'planta-edit/:id', component: PlantaComponent },
     { path: 'planta-insert', component: PlantaComponent }
   ]},
+
+  { path: 'fichas/home', component: HomeFichasComponent, canActivate:[SitunaGuard]},
 
   { path: 'reporteria', component: HomeReportesComponent, canActivate:[SitunaGuard], children:[
     { path: 'lista', component: ListaReportesComponent}
@@ -56,7 +99,16 @@ const routes: Routes = [
     { path: 'solicitud/:id', component: SolicitudComponent }
   ]},
 
+  { path: 'servicios', component: HomeServiciosComponent, canActivate:[SitunaGuard], children:[
+    { path: 'lista', component: ListaServiciosComponent},
+    { path: 'servicio-edit/:id', component: ServicioComponent },
+    { path: 'servicio-insert', component: ServicioComponent }
+  ]},
+
+  { path: '', component: InicioComponent, canActivate:[SitunaGuard]},
+
   { path: 'login', component: LoginComponent},
+  
   { path: '**', pathMatch: 'full', redirectTo: '' }
 ];
 

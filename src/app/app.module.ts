@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';//Para poder u
 //import { BrowserAnimationsModule } from '@angular/platform-browser/animations';//Animaciones en angular
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';//Esto se agrega para poder usar el router-outlet
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -30,15 +31,25 @@ import { DashboardComponent } from './components/analisis/dashboard/dashboard.co
 import { HomeSolicitudesComponent } from './components/solicitudes/home-solicitudes/home-solicitudes.component';
 import { ListaSolicitudesComponent } from './components/solicitudes/lista-solicitudes/lista-solicitudes.component';
 import { SolicitudComponent } from './components/solicitudes/solicitud/solicitud.component';
+
 import { HomeUsuariosComponent } from './components/usuarios/home-usuarios/home-usuarios.component';
 import { ListaUsuariosComponent } from './components/usuarios/lista-usuarios/lista-usuarios.component';
 import { UsuarioComponent } from './components/usuarios/usuario/usuario.component';
+
 import { HomeRolesComponent } from './components/roles/home-roles/home-roles.component';
-import { ListaRolesComponent } from './components/roies/lista-roles/lista-roles.component';
+import { ListaRolesComponent } from './components/roles/lista-roles/lista-roles.component';
 import { RolComponent } from './components/roles/rol/rol.component';
+
 import { HomeAsignacionesComponent } from './components/asignacionPermisos/home-asignaciones/home-asignaciones.component';
 import { ListaAsignacionesComponent } from './components/asignacionPermisos/lista-asignaciones/lista-asignaciones.component';
 import { AsignarPermisosComponent } from './components/asignacionPermisos/asignar-permisos/asignar-permisos.component';
+
+import { HomeServiciosComponent } from './components/serviciosC/home-servicios/home-servicios.component';
+import { ListaServiciosComponent } from './components/serviciosC/lista-servicios/lista-servicios.component';
+import { ServicioComponent } from './components/serviciosC/servicio/servicio.component';
+import { CuentaService } from './servicios/cuenta.service';
+import { SitunaGuard } from './guards/situna.guard';
+import { HomeFichasComponent } from './components/fichasInventario/home-fichas/home-fichas.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +62,6 @@ import { AsignarPermisosComponent } from './components/asignacionPermisos/asigna
     HomeAtractivoComponent,
     ListaAtractivosComponent,
     AtractivoComponent,
-    LoginComponent,
     HomeReportesComponent,
     ListaReportesComponent,
     HomeAnalisisComponent,
@@ -67,7 +77,12 @@ import { AsignarPermisosComponent } from './components/asignacionPermisos/asigna
     RolComponent,
     HomeAsignacionesComponent,
     ListaAsignacionesComponent,
-    AsignarPermisosComponent
+    AsignarPermisosComponent,
+    HomeServiciosComponent,
+    ListaServiciosComponent,
+    ServicioComponent,
+    LoginComponent,
+    HomeFichasComponent
   ],
   imports: [
     BrowserModule,
@@ -75,9 +90,10 @@ import { AsignarPermisosComponent } from './components/asignacionPermisos/asigna
     //BrowserAnimationsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+    NgbModule
   ],
-  providers: [],
+  providers: [CuentaService, SitunaGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

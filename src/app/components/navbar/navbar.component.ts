@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 //Import jquery
 import * as $ from 'jquery';
 import { CuentaService } from 'src/app/servicios/cuenta.service';
+import { Router } from '@angular/router';
 
 declare function OpenAtractivos();
 
@@ -18,7 +19,7 @@ declare function OpenPlanta();
 
 export class NavbarComponent implements OnInit {
 
-  constructor(private cuentaService: CuentaService) {
+  constructor(private cuentaService: CuentaService, private ruta: Router) {
   }
 
   ngOnInit() {
@@ -41,6 +42,7 @@ export class NavbarComponent implements OnInit {
 
   logout() {
     this.cuentaService.logout();
+    this.ruta.navigate(['/login']);//Ir al login
   }
 
 }

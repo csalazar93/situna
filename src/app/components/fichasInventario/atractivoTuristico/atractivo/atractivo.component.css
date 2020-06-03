@@ -29,7 +29,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 90vh;/*el tamaño del height centrado, el cual aumenta*/
+    /*min-height: 85vh;/*el tamaño del height centrado, el cual aumenta*/
   }
 
   .form-group{

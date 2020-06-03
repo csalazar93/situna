@@ -14,3 +14,18 @@
     height: 128px;
     margin-bottom: 0.5rem;
 }
+
+/*CSS para menu con cards*/
+.text-success{
+    color:#507c5b !important;
+}
+
+.border-success{
+    border-color: #507c5b !important;
+}
+
+.card-header{
+    background-color: #507c5b !important;
+    color: white !important;
+}
+/*Fin css menu con cards*/

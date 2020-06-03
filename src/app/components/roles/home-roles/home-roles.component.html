@@ -1,1 +1,13 @@
-<p>home-roles works!</p>
+<div class="row mt-5">
+    <div class="col-sm">
+        <h2 class="font-weight-bold">Módulo de Roles</h2>
+    </div>
+
+    <div class="col-sm-2">
+        <a id="btnInsertRol" class="btn btn-primary hvr-icon-forward" [routerLink]="['/roles/rol-insert']"
+            routerLinkActive="active">Nuevo rol <i class="fas fa-plus-square"></i></a>
+
+    </div>
+</div>
+
+<router-outlet></router-outlet>

@@ -1,1 +1,13 @@
-<p>home-usuarios works!</p>
+
+<div class="row  mt-5">
+    <div class="col-sm">
+        <h2 class="font-weight-bold">Módulo de Usuarios</h2>
+    </div>
+    
+    <div class="col-sm-2">
+        <a id="btnInsertUser" class="form-control btn btn-primary hvr-icon-forward float-right" [routerLink]="['/usuarios/usuario-insert']"
+                routerLinkActive="active">NUEVO <i class="fas fa-user-plus"></i></a>
+    </div>
+</div>
+
+<router-outlet></router-outlet>

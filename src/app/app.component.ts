@@ -3,8 +3,9 @@ import { Component } from '@angular/core';
 import {OnInit} from '@angular/core'
 
 import {Usuario} from './modelos/usuario';
+import { CuentaService } from './servicios/cuenta.service';
 
-import {CuentaService} from './servicios/cuenta.service';
+
 
 @Component({
   selector: 'app-root',

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
-import { CuentaService } from '../../servicios/cuenta.service';
-
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
+import { CuentaService } from 'src/app/servicios/cuenta.service';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     , private router: Router
     , private route: ActivatedRoute) {
     // redirect to home if already logged in
-    /*if (this.cuentaService.getUsuario$().currentUserValue) { 
+    /*if (this.cuentaService.currentUserValue) { 
         this.router.navigate(['/']);
     }*/
   }

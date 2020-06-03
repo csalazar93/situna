@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-roles',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeRolesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { 
+    this.router.navigate(['/roles/lista']);
+  }
 
   ngOnInit(): void {
   }

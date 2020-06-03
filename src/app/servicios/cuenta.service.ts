@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 
-import {Router} from '@angular/router';
-import {Observable, Subject, Subscription} from 'rxjs';
+import { Router } from '@angular/router';
+import { Observable, Subject, Subscription, BehaviorSubject } from 'rxjs';
 
-import {Usuario} from '../modelos/usuario';
+import { Usuario } from '../modelos/usuario';
 import { LoginComponent } from '../components/login/login.component';
 
 @Injectable({
@@ -12,45 +12,50 @@ import { LoginComponent } from '../components/login/login.component';
 export class CuentaService {
 
   private usuario$ = new Subject<Usuario>();
-  public isLogged:boolean;
+  //private usuarioBehavior$: BehaviorSubject<Usuario>;
+
+  public isLogged: boolean;
 
   constructor(private ruta: Router) {
     this.isLogged = false;
 
-   }
+  }
 
-   //Insertar el usuario en el subject, como no es un array no le hagp push
-   setUsuario(usuario:Usuario){
-     this.usuario$.next(usuario);
-   }
+  /*public get currentUserValue(): Usuario {
+    return this.usuarioBehavior$.value;
+  }*/
 
-   getUsuario$():Observable<Usuario>{
-     return this.usuario$.asObservable();
-   }
+  //Insertar el usuario en el subject, como no es un array no le hagp push
+  setUsuario(usuario: Usuario) {
+    this.usuario$.next(usuario);
+    //this.usuarioBehavior$.next(usuario);
+  }
 
-   login(){
-     this.isLogged = true;
-     let user:Usuario = {
-       nombre:'Cristhian',
-       cedula:'115360166',
-       pApellido:'Salazar',
-       sApellido:'Ureña',
-       rol:1,
-       password:'123456'
-     }
+  getUsuario$(): Observable<Usuario> {
+    return this.usuario$.asObservable();
+  }
 
-     this.setUsuario(user);
-   }
+  login() {
+    this.isLogged = true;
+    let user: Usuario = {
+      nombre: 'Cristhian',
+      cedula: '115360166',
+      pApellido: 'Salazar',
+      sApellido: 'Ureña',
+      rol: 1,
+      password: '123456'
+    }
 
-   logout(){
-     this.isLogged = false;
+    this.setUsuario(user);
+  }
 
-     this.setUsuario(null);
+  logout() {
+    this.isLogged = false;
 
-     this.ruta.navigate(['/login']);//Ir al login
-   }
+    this.setUsuario(null);
+  }
 
-   getLogin(){
-     return this.isLogged;
-   }
+  getLogin() {
+    return this.isLogged;
+  }
 }

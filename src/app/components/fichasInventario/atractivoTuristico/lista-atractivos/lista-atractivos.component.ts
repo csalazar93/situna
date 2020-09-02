@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 //Import jquery
-import * as $ from 'jquery';
+/*import * as $ from 'jquery';
 
-declare function OpenAtractivos();
-
+declare function OpenAtractivos();*/
 @Component({
   selector: 'app-lista-atractivos',
   templateUrl: './lista-atractivos.component.html',
@@ -15,7 +14,7 @@ export class ListaAtractivosComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    $(document).ready(function () {
+    /*$(document).ready(function () {
       
       $("#menuPrincipal a:not(.dropdown-toggle)").click(function () {
         $(".navbar-toggler").addClass("collapsed");
@@ -25,7 +24,7 @@ export class ListaAtractivosComponent implements OnInit {
       $("#btnAtractivo").click(function () {
         OpenAtractivos();
       });
-    });
+    });*/
   }
 
 }

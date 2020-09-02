@@ -1,0 +1,18 @@
+#btnBuscarPlanta{
+    width: 100%;
+}
+
+/*Estilo de color del card*/
+.card{
+    border-color: #007bff;
+}
+
+.card-header{
+    background-color: #007bff;
+}
+
+.card-header strong{
+    color:white;
+}
+
+/*Fin Estilo de color del card*/

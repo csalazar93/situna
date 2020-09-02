@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+//Import jquery
+import * as $ from 'jquery';
+
+declare function OpenAtractivos();
+
 @Component({
   selector: 'app-home-atractivo',
   templateUrl: './home-atractivo.component.html',
@@ -13,6 +18,17 @@ export class HomeAtractivoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    $(document).ready(function () {
+      
+      $("#menuPrincipal a:not(.dropdown-toggle)").click(function () {
+        $(".navbar-toggler").addClass("collapsed");
+        $("#navbarSupportedContent").removeClass("show", 250);
+      });
+
+      $("#btnInsertAtractivo").click(function () {
+        OpenAtractivos();
+      });
+    });
   }
 
 }

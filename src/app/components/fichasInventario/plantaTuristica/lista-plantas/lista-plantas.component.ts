@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 
 
 //Import jquery
-import * as $ from 'jquery';
+/*import * as $ from 'jquery';
 
-declare function OpenPlanta();
+declare function OpenPlanta();*/
 
 @Component({
   selector: 'app-lista-plantas',
@@ -16,7 +16,7 @@ export class ListaPlantasComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    $(document).ready(function () {
+    /*$(document).ready(function () {
       
       $("#menuPrincipal a:not(.dropdown-toggle)").click(function () {
         $(".navbar-toggler").addClass("collapsed");
@@ -26,7 +26,7 @@ export class ListaPlantasComponent implements OnInit {
       $("#btnPlanta").click(function () {
         OpenPlanta();
       });
-    });
+    });*/
   }
 
 }

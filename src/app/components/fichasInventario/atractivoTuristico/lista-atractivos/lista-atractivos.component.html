@@ -1,38 +1,54 @@
-<h1 class="text-center mt-5">Mantenimiento de Atractivo Turìstico</h1>
-<a id="btnAtractivo" class="btn btn-primary hvr-icon-forward" [routerLink]="['/fichas/crud-atractivo/atractivo-insert']" routerLinkActive="active">Nueva Atractivo <i class="fas fa-plus-square"></i></a>
 
-<h3 class="text-center">Fichas de Atractivo Turístico registradas</h3>
+<div class="row mt-2">
+    <div class="col-sm-2">
+        <h3>Filtros: </h3>
+    </div>
+    <div class="col-sm form-group">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <span><i class="fas fa-th-list font-weight-bold"></i> Cantón </span>
+                </div>
+            </div>
+            <select class="form-control col-sm-10" name="cantonAtractivo"
+                id="cantonAtractivo">
+                <option value="0">Seleccione un cantòn</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-sm form-group">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <span><i class="fas fa-feather font-weight-bold"></i> Descripcion </span>
+                </div>
+            </div>
+            <input type="text" class="form-control" id="filtroDescripcionAtractivo"
+                name="filtroDescripcionAtractivo" placeholder="Descripción Atractivo">
+        </div>
+    </div>
+    <div class="col-sm-2 form-group">
+        <button id="btnBuscarAtractivo" class="btn btn-primary float-right">BUSCAR <i class="fas fa-search"></i></button>
+    </div>
+</div>
 
-<div class="card mt-1 mb-1 ml-1 mr-1">
-    <div class="card-header">
-        <strong>Ficha de inventario</strong>
-    </div>
-    <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Detalles</a>
-        <a href="#" class="btn btn-danger ml-1">Eliminar</a>
-    </div>
-</div>
-<div class="card mt-1 mb-1 ml-1 mr-1">
-    <div class="card-header">
-        <strong>Ficha de inventario</strong>
-    </div>
-    <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Detalles</a>
-        <a href="#" class="btn btn-danger ml-1">Eliminar</a>
+
+<h3 class="mb-2 mt-2 ml-1 mr-1 text-center">Fichas registradas</h3>
+
+<div class="mt-1 atractivoList">
+    <div class="card mt-1 mb-1">
+        <div class="card-header">
+            <strong id="idFichaAtractivo" class="font-weight-bold">FAT-00000001</strong>
+        </div>
+        <div class="card-body">
+            <h5 id="nombreAtractivo" class="card-title font-weight-bold">Parque Nacional Chirripó</h5>
+            <p class="card-text text-justify" id="descripcionAtractivo">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <div class="text-center">
+                <a href="#" class="btn btn-primary mr-1" title="Màs informaciòn"><i class="fas fa-info-circle"></i></a>
+                <a href="#" class="btn btn-primary mr-1" title="Editar ficha"><i class="fas fa-edit"></i></a>
+                <a href="#" class="btn btn-danger mr-1" title="Activar/Desactivar ficha"><i class="fas fa-calendar-check"></i></a>
+            </div>
+        </div>
     </div>
 </div>
-<div class="card mt-1 mb-1 ml-1 mr-1">
-    <div class="card-header">
-        <strong>Ficha de inventario</strong>
-    </div>
-    <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Detalles</a>
-        <a href="#" class="btn btn-danger ml-1">Eliminar</a>
-    </div>
-</div>
+

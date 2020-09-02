@@ -32,17 +32,17 @@ import { HomeSolicitudesComponent } from './components/solicitudes/home-solicitu
 import { ListaSolicitudesComponent } from './components/solicitudes/lista-solicitudes/lista-solicitudes.component';
 import { SolicitudComponent } from './components/solicitudes/solicitud/solicitud.component';
 
-import { HomeUsuariosComponent } from './components/usuarios/home-usuarios/home-usuarios.component';
-import { ListaUsuariosComponent } from './components/usuarios/lista-usuarios/lista-usuarios.component';
-import { UsuarioComponent } from './components/usuarios/usuario/usuario.component';
+import { HomeUsuariosComponent } from './components/sistema/usuarios/home-usuarios/home-usuarios.component';
+import { ListaUsuariosComponent } from './components/sistema/usuarios/lista-usuarios/lista-usuarios.component';
+import { UsuarioComponent } from './components/sistema/usuarios/usuario/usuario.component';
 
-import { HomeRolesComponent } from './components/roles/home-roles/home-roles.component';
-import { ListaRolesComponent } from './components/roles/lista-roles/lista-roles.component';
-import { RolComponent } from './components/roles/rol/rol.component';
+import { HomeRolesComponent } from './components/sistema/roles/home-roles/home-roles.component';
+import { ListaRolesComponent } from './components/sistema/roles/lista-roles/lista-roles.component';
+import { RolComponent } from './components/sistema/roles/rol/rol.component';
 
-import { HomeAsignacionesComponent } from './components/asignacionPermisos/home-asignaciones/home-asignaciones.component';
-import { ListaAsignacionesComponent } from './components/asignacionPermisos/lista-asignaciones/lista-asignaciones.component';
-import { AsignarPermisosComponent } from './components/asignacionPermisos/asignar-permisos/asignar-permisos.component';
+import { HomeAsignacionesComponent } from './components/sistema/asignacionPermisos/home-asignaciones/home-asignaciones.component';
+import { ListaAsignacionesComponent } from './components/sistema/asignacionPermisos/lista-asignaciones/lista-asignaciones.component';
+import { AsignarPermisosComponent } from './components/sistema/asignacionPermisos/asignar-permisos/asignar-permisos.component';
 
 import { HomeServiciosComponent } from './components/serviciosC/home-servicios/home-servicios.component';
 import { ListaServiciosComponent } from './components/serviciosC/lista-servicios/lista-servicios.component';
@@ -50,6 +50,7 @@ import { ServicioComponent } from './components/serviciosC/servicio/servicio.com
 import { CuentaService } from './servicios/cuenta.service';
 import { SitunaGuard } from './guards/situna.guard';
 import { HomeFichasComponent } from './components/fichasInventario/home-fichas/home-fichas.component';
+import { HomeSistemaComponent } from './components/sistema/home-sistema/home-sistema.component';
 
 @NgModule({
   declarations: [
@@ -82,7 +83,8 @@ import { HomeFichasComponent } from './components/fichasInventario/home-fichas/h
     ListaServiciosComponent,
     ServicioComponent,
     LoginComponent,
-    HomeFichasComponent
+    HomeFichasComponent,
+    HomeSistemaComponent
   ],
   imports: [
     BrowserModule,

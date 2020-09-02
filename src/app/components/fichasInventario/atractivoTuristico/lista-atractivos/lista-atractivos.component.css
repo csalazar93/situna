@@ -1,4 +1,4 @@
-div.container{
+/*div.container{
     margin-left: auto !important;
     margin-right: auto !important;
 }
@@ -6,5 +6,24 @@ div.container{
 div.row{
     margin-left: auto !important;
     margin-right: auto !important;
+}*/
+
+#btnBuscarAtractivo{
+    width: 100%;
 }
+
+/*Estilo de color del card*/
+.card{
+    border-color: #007bff;
+}
+
+.card-header{
+    background-color: #007bff;
+}
+
+.card-header strong{
+    color:white;
+}
+
+/*Fin Estilo de color del card*/
 

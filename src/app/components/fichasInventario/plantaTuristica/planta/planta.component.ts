@@ -1,10 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 
+import { AdminService } from 'src/app/servicios/admin.service';
+import { PlantaService } from 'src/app/servicios/planta.service';
+
+import { AdminProvincia } from 'src/app/modelos/AdminProvincia';
+import { AdminCanton } from 'src/app/modelos/AdminCanton';
+import { AdminDistrito } from 'src/app/modelos/AdminDistrito';
+import { PlantaServicio } from 'src/app/modelos/PlantaServicio';
+
 //Animaciones en angular
 //import {trigger, state, style, animate, transition} from '@angular/animations';
 
 //Import jquery para usar jquery en angular
 import * as $ from 'jquery';
+import { Observable } from 'rxjs';
+import { FichaPlanta } from 'src/app/modelos/FichaPlanta';
+
 
 declare function ConfiguracionInicialPlanta();
 
@@ -21,21 +32,7 @@ declare function obtenerLocalizacion(ficha:any);
 @Component({
   selector: 'app-planta',
   templateUrl: './planta.component.html',
-  styleUrls: ['./planta.component.css'],
-  /*animations:[
-    trigger('aniFormulario', [
-      state('inactive', style({
-        transform: 'scale(1)',
-        visibility:'collapse'
-      })),
-      state('active', style({
-        transform: 'scale(1)',
-        visibility: 'visible'
-      })),
-      transition('inactive => active', [animate('500ms ease-in')]),
-      transition('active => inactive', [animate('500ms ease-out')])
-    ])
-  ]*/
+  styleUrls: ['./planta.component.css']
 
 })
 export class PlantaComponent implements OnInit {
@@ -51,11 +48,31 @@ export class PlantaComponent implements OnInit {
   };
   editarContacto:boolean = false;
 
-  constructor() {
+  /*Obtener datos de la API*/
+  provinciasList: AdminProvincia[];
+  /*Provincia seleccionada*/
+  provinciaSeleccionada: number = 1;/*Provincia nùmero 1*/
+
+  /*Obtener datos de la API*/
+  cantonesList: AdminCanton[];
+  /*Provincia seleccionada*/
+  cantonSeleccionado: number = 1;/*Provincia nùmero 1*/
+
+  /*Obtener datos de la API*/
+  distritosList: AdminDistrito[];
+  /*Provincia seleccionada*/
+  distritoSeleccionado: number = 1;/*Provincia nùmero 1*/
+
+  /*Listado de servicios que tiene la planta para elegir*/
+  serviciosPlantaList: PlantaServicio[];
+
+  /*Declarar acceso al service en el constructor*/
+  constructor(private adminservice: AdminService, private plantaservice: PlantaService) {
   }
 
   ngOnInit(): void {
 
+    /**-------------------JQUERY PARA UI */
     $(document).ready(function () {
       //Colocar la fecha actual de la aplicaciòn de la planta
       ConfiguracionInicialPlanta();
@@ -90,8 +107,91 @@ export class PlantaComponent implements OnInit {
 
       });
     });
+
+    /**---------------------CARGAR LAS PROVINCIAS */
+    /*Obtener la data de provincias*/
+    this.CargarProvincias();
+
+    /*Obtener la lista de servicios*/
+    this.CargarServiciosPlanta();
   }
 
+  /*Cargar los servicios que puede tener una planta desde la REST API*/
+  CargarServiciosPlanta(){
+    this.plantaservice.getPlantaServiciosList().subscribe(
+      data => {
+        /*AQUI ES DONDE LLAMO PARA COLOCAR LOS SERVICIOS QUE TIENE LA PLANTA EN ESPECIFICO
+        data[0].seleccionado = true;*/
+        this.serviciosPlantaList = data;
+        console.log(this.serviciosPlantaList);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  /*Asi se llama al mètodo del servicio*/
+  CargarProvincias(){
+    this.adminservice.getProvinciasList().subscribe(
+      data =>{
+        this.provinciasList = data;
+
+        this.CargarCantones();
+
+        this.CargarDistritos();
+      },
+      error =>{
+        console.log(error);
+      }
+    );
+  }
+
+  /*Llamar al servicio de cargar cantones*/
+  CargarCantones(){
+    this.adminservice.getCantonesProvinciaList(this.provinciaSeleccionada).subscribe(
+      data =>{
+        this.cantonesList = data;
+        this.cantonSeleccionado = this.cantonesList[0].id_canton;
+
+        this.CargarDistritos();
+      },
+      error =>{
+        console.log(error);
+      }
+    );  
+  }
+
+  /*Llamar al servicio de cargar distritos*/
+  CargarDistritos(){
+    this.adminservice.getDistritosCantonList(this.cantonSeleccionado).subscribe(
+      data =>{
+        this.distritosList = data;
+        this.distritoSeleccionado = this.distritosList[0].id_distrito;
+      },
+      error =>{
+        console.log(error);
+      }
+    );    
+  }
+
+  /*Cargar los cantones de la provincia seleccionada*/
+  CargarCantonesProvincia(){
+    this.CargarCantones();
+    console.log(this.provinciaSeleccionada);
+  }
+
+  /*Cargar los distritos de el canton seleccionada*/
+  CargarDistritosCanton(){
+    this.CargarDistritos();
+    console.log(this.cantonSeleccionado);
+  }
+  /*Distrito seleccionado*/
+  CargarDistritoSeleccionado(){
+    console.log(this.distritoSeleccionado);
+  }
+
+  /**---------------------------------------------------------FUNCIONES DE UI Y LOCALIZACION-------------------------------------------------------------------------------------------------- */
   ObtenerLocalizacion(){
     obtenerLocalizacion('P');
   }

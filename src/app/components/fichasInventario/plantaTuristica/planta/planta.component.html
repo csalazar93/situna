@@ -229,22 +229,22 @@
         <!--Datos sobre dirección-->
         <div class="form-group col-sm">
           <label for="provincia"><strong>7. Provincia:</strong></label>
-          <select name="provincia" id="provincia" class="custom-select">
-            <option value="01">San José</option>
+          <select name="provincia" id="provincia" class="custom-select" [(ngModel)]="provinciaSeleccionada" (change)="CargarCantonesProvincia()">
+            <option *ngFor="let provincia of provinciasList" value={{provincia.id_provincia}}>{{provincia.provincia}}</option>
           </select>
         </div>
 
         <div class="form-group col-sm">
           <label for="canton"><strong>8. Cantón:</strong></label>
-          <select name="canton" id="canton" class="custom-select">
-            <option value="01">Pérez Zeledón</option>
+          <select name="canton" id="canton" class="custom-select" [(ngModel)]="cantonSeleccionado" (change)="CargarDistritosCanton()">
+            <option *ngFor="let canton of cantonesList" value={{canton.id_canton}}>{{canton.canton}}</option>
           </select>
         </div>
 
         <div class="form-group col-sm">
           <label for="distrito"><strong>9. Distrito:</strong></label>
-          <select name="distrito" id="distrito" class="custom-select">
-            <option value="01">Daniel Flores</option>
+          <select name="distrito" id="distrito" class="custom-select" [(ngModel)]="distritoSeleccionado" (change)="CargarDistritoSeleccionado()">
+            <option *ngFor="let distrito of distritosList" value={{distrito.id_distrito}}>{{distrito.distrito}}</option>
           </select>
         </div>
       </div>
@@ -301,7 +301,18 @@
       <label>15. ¿Cuáles de los siguientes servicios se brindan hoy día en este negocio? <strong>LEER UNO A UNO LOS
           SERVICIOS AL INFORMANTE Y SELECCIONAR</strong></label>
 
-      <div class="row listaServicios">
+      <div class="row listaServicios" id="listaServicios">
+        <div class="col-sm-6" *ngFor="let servicioPlanta of serviciosPlantaList">
+
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" name="servicioPlanta" [checked]="servicioPlanta.seleccionado" id="servicio{{servicioPlanta.id_servicio}}" value={{servicioPlanta.id_servicio}}>
+            <label class="custom-control-label" for="servicio{{servicioPlanta.id_servicio}}">{{servicioPlanta.id_servicio}}. {{servicioPlanta.servicio}}</label>
+          </div>
+
+        </div>
+      </div>
+
+      <!--<div class="row listaServicios">
         <div class="form-group col-sm">
           <div class="custom-control custom-checkbox">
             <input class="custom-control-input" type="checkbox" name="servicioPlanta" id="banioPrivado" value="1">
@@ -356,6 +367,7 @@
             <input class="custom-control-input" type="checkbox" name="servicioPlanta" id="wifi" value="11">
             <label class="custom-control-label" for="wifi">11. Wi-Fi (Internet) (Velocidad en MB).</label>
           </div>
+
           <div class="custom-control custom-checkbox">
             <input class="custom-control-input" type="checkbox" name="servicioPlanta" id="servicioTelefono" value="12">
             <label class="custom-control-label" for="servicioTelefono">12. Servicio telefónico.</label>
@@ -444,7 +456,7 @@
           </div>
 
         </div>
-      </div>
+      </div>-->
 
       <div class="form-group">
         <label for="observacionesServicios">Observaciones obtenidas en la selección de los servicios:</label>

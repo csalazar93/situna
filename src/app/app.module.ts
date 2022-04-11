@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
+import {HttpClientModule} from '@angular/common/http';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';//Para poder usar el ngModel
 //import { BrowserAnimationsModule } from '@angular/platform-browser/animations';//Animaciones en angular
 import { RouterModule } from '@angular/router';
@@ -93,7 +95,8 @@ import { HomeSistemaComponent } from './components/sistema/home-sistema/home-sis
     ReactiveFormsModule,
     AppRoutingModule,
     MDBBootstrapModule.forRoot(),
-    NgbModule
+    NgbModule,
+    HttpClientModule
   ],
   providers: [CuentaService, SitunaGuard],
   bootstrap: [AppComponent]

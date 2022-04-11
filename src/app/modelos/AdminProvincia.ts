@@ -1,5 +1,5 @@
 export class AdminProvincia{
-    id_provinicia: number;
+    id_provincia: number;
     numero_provincia: number;
     provincia: string;
     audit_fecha_registro: Date;

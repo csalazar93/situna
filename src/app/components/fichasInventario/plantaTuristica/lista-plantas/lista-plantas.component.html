@@ -35,13 +35,28 @@
 <h3 class="mb-2 mt-2 ml-1 mr-1 text-center">Fichas registradas</h3>
 
 <div class="mt-1 plantasList">
-    <div class="card mt-1 mb-1">
+    <!--<div class="card mt-1 mb-1">
         <div class="card-header">
             <strong id="idFichaPlanta" class="font-weight-bold">FPT-00000001</strong>
         </div>
         <div class="card-body">
             <h5 id="nombrePlanta" class="card-title font-weight-bold">Restaurante Chirripó</h5>
             <p class="card-text text-justify" id="descripcionPlanta">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <div class="text-center">
+                <a href="#" class="btn btn-primary mr-1" title="Màs informaciòn"><i class="fas fa-info-circle"></i></a>
+                <a href="#" class="btn btn-primary mr-1" title="Editar ficha"><i class="fas fa-edit"></i></a>
+                <a href="#" class="btn btn-danger mr-1" title="Activar/Desactivar ficha"><i class="fas fa-calendar-check"></i></a>
+            </div>
+        </div>
+    </div>-->
+
+    <div class="card mt-1 mb-1" *ngFor="let ficha of allFichasPlantaList">
+        <div class="card-header">
+            <strong id="idFichaPlanta" class="font-weight-bold">{{ficha.id_ficha_inventario}}</strong>
+        </div>
+        <div class="card-body">
+            <h5 id="nombrePlanta" class="card-title font-weight-bold">{{ficha.info_planta[0].nombre_proyecto}}</h5>
+            <p class="card-text text-justify" id="descripcionPlanta"><strong>Principal Atractivo:</strong> {{ficha.info_planta[0].principal_atractivo}} - <strong>Representante:</strong> {{ficha.info_planta[0].representante_legal}}</p>
             <div class="text-center">
                 <a href="#" class="btn btn-primary mr-1" title="Màs informaciòn"><i class="fas fa-info-circle"></i></a>
                 <a href="#" class="btn btn-primary mr-1" title="Editar ficha"><i class="fas fa-edit"></i></a>
